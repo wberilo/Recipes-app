@@ -9,7 +9,6 @@ function Bebidas() {
         .then((data) => data.json());
       const min = 0;
       const max = 12;
-      console.log(fetched.drinks.slice(min, max))
       setBeverageCards(fetched.drinks.slice(min, max));
     }
     grabFoodItems();
