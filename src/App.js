@@ -11,7 +11,7 @@ import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const contextValue = {};
+  const contextValue = { foodsFetched: [] };
   return (
     <div className="meals">
       <RecipeContext.Provider value={ contextValue }>
