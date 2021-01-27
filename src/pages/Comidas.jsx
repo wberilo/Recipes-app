@@ -35,13 +35,21 @@ function Comidas() {
     }
   }, [catSelected]);
 
+  function onClick(string) {
+    if (catSelected === string) {
+      setCatSelected();
+    } else {
+      setCatSelected(string);
+    }
+  }
+
   return (
     <div>
       <div>
         {categories.map((card, index) => (
           <button
             data-testid={ `${card.strCategory}-category-filter` }
-            onClick={ () => setCatSelected(card.strCategory) }
+            onClick={ () => onClick(card.strCategory) }
             key={ index }
             type="button"
           >

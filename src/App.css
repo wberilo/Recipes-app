@@ -1,6 +1,7 @@
 .meals {
   align-items: center;
   background: #0fa36b;
+  display: flex;
   color: #464646;
   flex-direction: column;
   font-family: sans-serif;

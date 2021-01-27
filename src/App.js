@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const contextValue = { foodsFetched: [] };
   return (
-    <div className="meals">
+    <div>
       <RecipeContext.Provider value={ contextValue }>
         <BrowserRouter>
           <Switch>
@@ -23,14 +23,16 @@ function App() {
           </Switch>
         </BrowserRouter>
       </RecipeContext.Provider>
-      <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object>
+      <div className="meals">
+        <span className="logo">TRYBE</span>
+        <object
+          className="rocksGlass"
+          type="image/svg+xml"
+          data={ rockGlass }
+        >
+          Glass
+        </object>
+      </div>
     </div>
   );
 }
