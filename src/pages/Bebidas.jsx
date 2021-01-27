@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function Bebidas() {
+function Bebidas(props) {
   const [beverageCards, setBeverageCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
@@ -44,7 +46,7 @@ function Bebidas() {
       setCatSelected(string);
     }
   }
-
+  const { history } = props;
   return (
     <div>
       <div>
@@ -69,6 +71,10 @@ function Bebidas() {
       <div className="gallery">
         {beverageCards.map((card, index) => (
           <div
+            tabIndex="0"
+            role="button"
+            onClick={ () => history.push(`/bebidas/${card.idDrink}`) }
+            onKeyDown={ () => console.log('a') }
             key={ index }
             data-testid={ `${index}-recipe-card` }
           >
@@ -85,4 +91,8 @@ function Bebidas() {
   );
 }
 
-export default Bebidas;
+Bebidas.propTypes = {
+  history: PropTypes.objectOf().isRequired,
+};
+
+export default withRouter(Bebidas);

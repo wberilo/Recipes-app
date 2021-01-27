@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function Comidas() {
+function Comidas(props) {
   const [foodCards, setFoodCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
@@ -42,7 +44,7 @@ function Comidas() {
       setCatSelected(string);
     }
   }
-
+  const { history } = props;
   return (
     <div>
       <div>
@@ -67,6 +69,10 @@ function Comidas() {
       <div className="gallery">
         {foodCards.map((card, index) => (
           <div
+            tabIndex="0"
+            role="button"
+            onClick={ () => history.push(`/comidas/${card.idMeal}`) }
+            onKeyDown={ () => console.log('a') }
             key={ index }
             data-testid={ `${index}-recipe-card` }
           >
@@ -83,4 +89,8 @@ function Comidas() {
   );
 }
 
-export default Comidas;
+Comidas.propTypes = {
+  history: PropTypes.objectOf().isRequired,
+};
+
+export default withRouter(Comidas);
