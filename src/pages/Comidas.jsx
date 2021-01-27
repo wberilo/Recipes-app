@@ -7,6 +7,9 @@ function Comidas(props) {
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
 
+  const { history, location } = props;
+  const { ingredient } = location;
+
   useEffect(() => {
     async function grabFoodItems() {
       const fetched = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -19,10 +22,10 @@ function Comidas(props) {
       setCategories(fetchCategories.meals.slice(min, max));
       setFoodCards(fetched.meals.slice(min, max2));
     }
-    if (!catSelected) {
+    if (!catSelected && !ingredient) {
       grabFoodItems();
     }
-  }, [catSelected]);
+  }, [ingredient, catSelected]);
 
   useEffect(() => {
     async function grabByCategory() {
@@ -37,6 +40,21 @@ function Comidas(props) {
     }
   }, [catSelected]);
 
+  useEffect(() => {
+    async function grabByIngredient() {
+      const min = 0;
+      const max = 5;
+      const max2 = 12;
+      const fetchCategories = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
+        .then((data) => data.json());
+      const fetchByIngredient = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+        .then((data) => data.json());
+      setCategories(fetchCategories.meals.slice(min, max));
+      setFoodCards(fetchByIngredient.meals.slice(min, max2));
+    }
+    if (ingredient && !catSelected) grabByIngredient();
+  }, [ingredient, catSelected]);
+
   function onClick(string) {
     if (catSelected === string) {
       setCatSelected();
@@ -44,7 +62,7 @@ function Comidas(props) {
       setCatSelected(string);
     }
   }
-  const { history } = props;
+
   return (
     <div>
       <div>
@@ -90,7 +108,8 @@ function Comidas(props) {
 }
 
 Comidas.propTypes = {
-  history: PropTypes.objectOf().isRequired,
-};
+  history: PropTypes.objectOf(),
+  location: PropTypes.objectOf(),
+}.isRequired;
 
 export default withRouter(Comidas);
