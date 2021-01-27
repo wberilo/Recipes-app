@@ -46,6 +46,13 @@ function Comidas() {
   return (
     <div>
       <div>
+        <button
+          onClick={ () => onClick() }
+          type="button"
+          data-testid="All-category-filter"
+        >
+          Todas Categorias
+        </button>
         {categories.map((card, index) => (
           <button
             data-testid={ `${card.strCategory}-category-filter` }
