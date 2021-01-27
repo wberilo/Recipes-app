@@ -18,9 +18,9 @@ function App() {
   const contextValue = { foodsFetched: [] };
   return (
     <div>
-      <Header />
       <RecipeContext.Provider value={ contextValue }>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/comidas" component={ Comidas } />
