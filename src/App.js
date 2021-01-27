@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RecipeContext from './context/RecipeContext';
 import { Comidas,
+  Header,
   Bebidas,
   InitialExplore,
   Explore,
@@ -17,6 +18,7 @@ function App() {
   const contextValue = { foodsFetched: [] };
   return (
     <div>
+      <Header />
       <RecipeContext.Provider value={ contextValue }>
         <BrowserRouter>
           <Switch>
