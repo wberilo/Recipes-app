@@ -7,6 +7,9 @@ function Bebidas(props) {
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
 
+  const { history, location } = props;
+  const { ingredient } = location;
+
   useEffect(() => {
     async function grabFoodItems() {
       const fetched = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
@@ -19,25 +22,38 @@ function Bebidas(props) {
       setCategories(fetchCategories.drinks.slice(min, max));
       setBeverageCards(fetched.drinks.slice(min, max2));
     }
-    if (!catSelected) {
+    if (!catSelected && !ingredient) {
       grabFoodItems();
     }
-  }, [catSelected]);
+  }, [ingredient, catSelected]);
 
   useEffect(() => {
     async function grabByCategory() {
       const fetchByCategory = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${catSelected}`)
         .then((data) => data.json());
-      console.log('catSelected');
       const min = 0;
       const max = 12;
       setBeverageCards(fetchByCategory.drinks.slice(min, max));
     }
-    console.log(catSelected);
     if (catSelected !== undefined) {
       grabByCategory();
     }
   }, [catSelected]);
+
+  useEffect(() => {
+    async function grabByIngredient() {
+      const min = 0;
+      const max = 5;
+      const max2 = 12;
+      const fetchCategories = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+        .then((data) => data.json());
+      const fetchByIngredient = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+        .then((data) => data.json());
+      setCategories(fetchCategories.drinks.slice(min, max));
+      setBeverageCards(fetchByIngredient.drinks.slice(min, max2));
+    }
+    if (ingredient && !catSelected) grabByIngredient();
+  }, [ingredient, catSelected]);
 
   function onClick(string) {
     if (catSelected === string) {
@@ -46,7 +62,7 @@ function Bebidas(props) {
       setCatSelected(string);
     }
   }
-  const { history } = props;
+
   return (
     <div>
       <div>
@@ -92,7 +108,8 @@ function Bebidas(props) {
 }
 
 Bebidas.propTypes = {
-  history: PropTypes.objectOf().isRequired,
-};
+  history: PropTypes.objectOf(),
+  location: PropTypes.objectOf(),
+}.isRequired;
 
 export default withRouter(Bebidas);
