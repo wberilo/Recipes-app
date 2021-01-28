@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RecipeContext from './context/RecipeContext';
 import { Comidas,
+  Header,
   Bebidas,
   InitialExplore,
   Explore,
@@ -19,6 +20,7 @@ function App() {
     <div>
       <RecipeContext.Provider value={ contextValue }>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/comidas" component={ Comidas } />

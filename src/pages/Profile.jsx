@@ -4,10 +4,14 @@ import PropTypes from 'prop-types';
 
 function Profile(props) {
   const user = JSON.parse(localStorage.getItem('user'));
+  let email = '';
+  if (user) {
+    email = user.email;
+  }
   const { history } = props;
   return (
     <div>
-      <h1 data-testid="profile-email">{user.email}</h1>
+      <h1 data-testid="profile-email">{email}</h1>
       <button
         type="button"
         data-testid="profile-done-btn"

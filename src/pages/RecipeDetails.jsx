@@ -22,20 +22,19 @@ function RecipeDetails(props) {
 
   const [recipe, setRecipe] = useState([]);
 
-  async function getRecipe() {
-    if (pathname.includes('comidas')) {
-      const { meals } = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((response) => response.json());
-      return setRecipe(meals);
-    }
-    const { drinks } = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-      .then((response) => response.json());
-    return setRecipe(drinks);
-  }
-
   useEffect(() => {
+    async function getRecipe() {
+      if (pathname.includes('comidas')) {
+        const { meals } = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+          .then((response) => response.json());
+        return setRecipe(meals);
+      }
+      const { drinks } = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+        .then((response) => response.json());
+      return setRecipe(drinks);
+    }
     getRecipe();
-  });
+  }, [pathname, id]);
 
   console.log(recipe);
 

@@ -6,8 +6,10 @@ import RecipeDetails from './RecipeDetails';
 import Comidas from './Comidas';
 import Bebidas from './Bebidas';
 import Profile from './Profile';
+import Header from './Components/Header';
 
 export {
+  Header,
   Profile,
   Comidas,
   Bebidas,
