@@ -7,6 +7,7 @@ import { Comidas,
   InitialExplore,
   Explore,
   ExploreIngredients,
+  ExploreArea,
   RecipeDetails,
   Profile } from './pages';
 import Login from './pages/Login';
@@ -48,6 +49,16 @@ function App() {
               exact
               path="/explorar/bebidas/ingredientes"
               component={ ExploreIngredients }
+            />
+            <Route
+              exact
+              path="/explorar/comidas/area"
+              component={ ExploreArea }
+            />
+            <Route
+              exact
+              path="/explorar/bebidas/area"
+              component={ ExploreArea }
             />
           </Switch>
         </BrowserRouter>
