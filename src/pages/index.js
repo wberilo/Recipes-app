@@ -6,6 +6,7 @@ import RecipeDetails from './RecipeDetails';
 import Comidas from './Comidas';
 import Bebidas from './Bebidas';
 import Profile from './Profile';
+import ExploreArea from './ExploreArea';
 import Header from './Components/Header';
 
 export {
@@ -17,4 +18,5 @@ export {
   Explore,
   ExploreIngredients,
   RecipeDetails,
+  ExploreArea,
 };
