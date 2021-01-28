@@ -7,8 +7,10 @@ import Comidas from './Comidas';
 import Bebidas from './Bebidas';
 import Profile from './Profile';
 import Header from './Components/Header';
+import DoneRecipes from './DoneRecipes';
 
 export {
+  DoneRecipes,
   Header,
   Profile,
   Comidas,

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RecipeContext from './context/RecipeContext';
 import { Comidas,
+  DoneRecipes,
   Header,
   Bebidas,
   InitialExplore,
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/explorar" component={ InitialExplore } />
             <Route exact path="/explorar/comidas" component={ Explore } />
             <Route exact path="/explorar/bebidas" component={ Explore } />
+            <Route exact path="/receitas-feitas" component={ DoneRecipes } />
             <Route exact path="/perfil" component={ Profile } />
             <Route
               exact
