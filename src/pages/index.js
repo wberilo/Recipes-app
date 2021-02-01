@@ -8,8 +8,10 @@ import Bebidas from './Bebidas';
 import Profile from './Profile';
 import ExploreArea from './ExploreArea';
 import Header from './Components/Header';
+import DoneRecipes from './DoneRecipes';
 
 export {
+  DoneRecipes,
   Header,
   Profile,
   Comidas,
