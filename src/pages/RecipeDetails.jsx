@@ -21,50 +21,18 @@ function RecipeDetails(props) {
   const {
     setIsFavorite,
     recipe,
-    setRecipe,
     recommended,
-    setRecommended,
+    getRecipe,
+    getRecommended,
   } = useContext(RecipeContext);
 
   useEffect(() => {
-    async function getRecipe() {
-      if (pathname.includes('comidas')) {
-        const { meals } = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-          .then((response) => response.json());
-        return setRecipe(meals);
-      }
-      const { drinks } = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((response) => response.json());
-      return setRecipe(drinks);
-    }
-    getRecipe();
-  }, [pathname, id, setRecipe]);
+    getRecipe(pathname, id);
+  }, [getRecipe, pathname, id]);
 
   useEffect(() => {
-    async function getRecommended() {
-      const setRecommendations = (array) => {
-        const min = 0;
-        const max = 2;
-        const min2 = 2;
-        const max2 = 4;
-        const min3 = 4;
-        const max3 = 6;
-        const set1 = array.slice(min, max);
-        const set2 = array.slice(min2, max2);
-        const set3 = array.slice(min3, max3);
-        return setRecommended([set1, set2, set3]);
-      };
-      if (pathname.includes('comida')) {
-        const { drinks } = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
-          .then((response) => response.json());
-        return setRecommendations(drinks);
-      }
-      const { meals } = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
-        .then((response) => response.json());
-      return setRecommendations(meals);
-    }
-    getRecommended();
-  }, [pathname, setRecommended]);
+    getRecommended(pathname);
+  }, [getRecommended, pathname]);
 
   if (!recipe[0] || !recommended[0]) return <Loading />;
 
