@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import RecipeContext from './context/RecipeContext';
+import { Provider } from './context/RecipeContext';
 import { Comidas,
   DoneRecipes,
   Header,
@@ -17,10 +17,9 @@ import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const contextValue = { foodsFetched: [] };
   return (
     <div>
-      <RecipeContext.Provider value={ contextValue }>
+      <Provider>
         <BrowserRouter>
           <Header />
           <Switch>
@@ -64,7 +63,7 @@ function App() {
             />
           </Switch>
         </BrowserRouter>
-      </RecipeContext.Provider>
+      </Provider>
       <div className="meals">
         <span className="logo">TRYBE</span>
         <object

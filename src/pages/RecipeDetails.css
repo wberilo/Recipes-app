@@ -1,3 +1,108 @@
+.image-container {
+  align-items: center;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem;
+  padding-bottom: 0;
+}
+
+.name-category {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.recipe-title {
+  margin-bottom: 4px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .icon {
-  margin: 0 5px;
+  cursor: pointer;
+  margin: 0 11px;
+}
+
+.heart {
+  margin-right: 5px;
+}
+
+.modal-text {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.instructions-title {
+  padding-bottom: 0.3rem;
+  padding-top: 1rem;
+}
+
+.one {
+  padding-top: 0;
+}
+
+.instructions {
+  background-color: rgb(241, 236, 236);
+  font-size: 0.88rem;
+  padding: 0.4rem 0.7rem;
+}
+
+.ingredient {
+  background-color: rgb(241, 236, 236);
+  padding: 0;
+}
+
+.recommendation-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.recommendation-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  float: left;
+  height: 150px;
+  margin: 10px;
+  width: 133px;
+}
+
+.recommendation-image-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.recommendation-body {
+  padding: 0.5rem;
+}
+
+.recommendation-subtitle {
+  font-size: 0.85rem;
+}
+
+.recommendation-title {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.start-recipe-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.25rem;
+}
+
+.start-recipe-btn {
+  bottom: 0;
+  position: fixed;
+  width: 88%;
 }
