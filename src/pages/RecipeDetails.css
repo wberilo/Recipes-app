@@ -1,16 +1,16 @@
 .image-container {
-  height: 120px;
   align-items: center;
   display: flex;
-  overflow: hidden;
+  height: 120px;
   justify-content: center;
+  overflow: hidden;
 }
 
 .header {
-  padding: 1.25rem;
   display: flex;
-  padding-bottom: 0;
   justify-content: space-between;
+  padding: 1.25rem;
+  padding-bottom: 0;
 }
 
 .name-category {
@@ -42,8 +42,8 @@
 }
 
 .instructions-title {
-  padding-top: 1rem;
   padding-bottom: 0.3rem;
+  padding-top: 1rem;
 }
 
 .one {
@@ -68,18 +68,18 @@
 }
 
 .recommendation-card {
-  height: 150px;
-  width: 133px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 10px;
   float: left;
+  height: 150px;
+  margin: 10px;
+  width: 133px;
 }
 
 .recommendation-image-container {
   align-items: center;
   display: flex;
-  overflow: hidden;
   justify-content: center;
+  overflow: hidden;
 }
 
 .recommendation-body {
@@ -96,13 +96,13 @@
 }
 
 .start-recipe-container {
-  padding: 0 1.25rem;
   display: flex;
   justify-content: center;
+  padding: 0 1.25rem;
 }
 
 .start-recipe-btn {
-  width: 88%;
   bottom: 0;
   position: fixed;
+  width: 88%;
 }
