@@ -7,6 +7,7 @@ import { Loading,
   RecommendedRecipes,
   RecipeDetailsHeader,
   RecipeDetailsIngredients,
+  IngredientsInProgress,
   RecipeDetailsButton,
   RecipeDetailsModal } from '../components';
 import './RecipeDetails.css';
@@ -28,11 +29,11 @@ function RecipeDetails(props) {
 
   useEffect(() => {
     getRecipe(pathname, id);
-  }, [getRecipe, pathname, id]);
+  }, [pathname, id]);
 
   useEffect(() => {
     getRecommended(pathname);
-  }, [getRecommended, pathname]);
+  }, [pathname]);
 
   if (!recipe[0] || !recommended[0]) return <Loading />;
 
@@ -60,6 +61,8 @@ function RecipeDetails(props) {
 
   checkFavorite();
 
+  console.log('Fui chamado!');
+
   return (
     <Card>
       <div className="image-container">
@@ -78,7 +81,8 @@ function RecipeDetails(props) {
             Ingredientes
           </strong>
         </Card.Subtitle>
-        <RecipeDetailsIngredients />
+        { pathname.includes('progress')
+          ? <IngredientsInProgress /> : <RecipeDetailsIngredients /> }
         <Card.Subtitle
           className="instructions-title"
         >
@@ -91,7 +95,9 @@ function RecipeDetails(props) {
             { strInstructions }
           </Card.Text>
         </Card>
-        { pathname.includes('comidas') && <RecipeVideo videoString={ strYoutube } /> }
+        { pathname.includes('comida')
+          ? !pathname.includes('progress')
+          && <RecipeVideo videoString={ strYoutube } /> : null }
         <Card.Subtitle
           className="instructions-title"
         >

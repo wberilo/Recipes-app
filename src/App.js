@@ -36,6 +36,16 @@ function App() {
               path="/bebidas/:id"
               render={ (props) => <RecipeDetails { ...props } /> }
             />
+            <Route
+              exact
+              path="/comidas/:id/in-progress"
+              render={ (props) => <RecipeDetails { ...props } /> }
+            />
+            <Route
+              exact
+              path="/bebidas/:id/in-progress"
+              render={ (props) => <RecipeDetails { ...props } /> }
+            />
             <Route exact path="/explorar" component={ InitialExplore } />
             <Route exact path="/explorar/comidas" component={ Explore } />
             <Route exact path="/explorar/bebidas" component={ Explore } />
