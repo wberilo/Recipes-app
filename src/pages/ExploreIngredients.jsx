@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
-import Loading from '../components';
+import { Loading } from '../components';
 
 function ExploreIngredients({ history }) {
   const { location } = history;
@@ -27,15 +27,6 @@ function ExploreIngredients({ history }) {
     }
     getIngredients();
   }, [pathname]);
-
-  const renderLoading = () => (
-    <Card style={ { display: 'flex' } }>
-      <Card.Title>Carregando...</Card.Title>
-      <div style={ { alignSelf: 'center' } }>
-        <Loading />
-      </div>
-    </Card>
-  );
 
   return (
     <CardDeck
@@ -85,7 +76,7 @@ function ExploreIngredients({ history }) {
           </Link>
         );
       })
-        : renderLoading() }
+        : <Loading /> }
     </CardDeck>
   );
 }
