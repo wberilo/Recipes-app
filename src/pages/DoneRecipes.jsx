@@ -5,7 +5,8 @@ import { Button } from 'react-bootstrap';
 import DoneCard from './Components/DoneCard';
 
 function DoneRecipes() {
-  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  if (!doneRecipes) doneRecipes = [];
   const [shownRecipes, setShownRecipes] = useState(doneRecipes);
   return (
     <div>

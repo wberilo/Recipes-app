@@ -3,11 +3,9 @@ import propTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { RecipeContext } from '../context/RecipeContext';
 import { Loading,
-  RecipeVideo,
-  RecommendedRecipes,
+  RecommendedRecipesBody,
   RecipeDetailsHeader,
   RecipeDetailsIngredients,
-  IngredientsInProgress,
   RecipeDetailsButton,
   RecipeDetailsModal } from '../components';
 import './RecipeDetails.css';
@@ -72,7 +70,6 @@ function RecipeDetails(props) {
   const {
     strMealThumb,
     strInstructions,
-    strYoutube,
   } = recipe[0];
 
   let image = strMealThumb;
@@ -93,8 +90,6 @@ function RecipeDetails(props) {
 
   checkFavorite();
 
-  console.log('Fui chamado!');
-
   return (
     <Card>
       <div className="image-container">
@@ -113,8 +108,7 @@ function RecipeDetails(props) {
             Ingredientes
           </strong>
         </Card.Subtitle>
-        { pathname.includes('progress')
-          ? <IngredientsInProgress /> : <RecipeDetailsIngredients /> }
+        <RecipeDetailsIngredients path={ pathname } recipeId={ id } />
         <Card.Subtitle
           className="instructions-title"
         >
@@ -127,17 +121,7 @@ function RecipeDetails(props) {
             { strInstructions }
           </Card.Text>
         </Card>
-        { pathname.includes('comida')
-          ? !pathname.includes('progress')
-          && <RecipeVideo videoString={ strYoutube } /> : null }
-        <Card.Subtitle
-          className="instructions-title"
-        >
-          <strong>
-            Recomendadas
-          </strong>
-        </Card.Subtitle>
-        <RecommendedRecipes path={ pathname } />
+        <RecommendedRecipesBody path={ pathname } recipeID={ id } />
       </Card.Body>
       <RecipeDetailsButton path={ pathname } recipeId={ id } />
       <RecipeDetailsModal />

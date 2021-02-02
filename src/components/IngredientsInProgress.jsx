@@ -33,8 +33,6 @@ function IngredientsInProgress() {
     return `- ${name} | ${measure}`;
   };
 
-  console.log('Fui chamado!');
-
   return (
     <Card className="instructions">
       <ListGroup variant="flush">
