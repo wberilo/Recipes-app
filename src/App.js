@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from './context/RecipeContext';
 import { Comidas,
+  FavoriteRecipes,
   DoneRecipes,
   Header,
   Bebidas,
@@ -48,6 +49,7 @@ function App() {
           <Route exact path="/explorar/comidas" component={ Explore } />
           <Route exact path="/explorar/bebidas" component={ Explore } />
           <Route exact path="/receitas-feitas" component={ DoneRecipes } />
+          <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
           <Route exact path="/perfil" component={ Profile } />
           <Route
             exact
