@@ -1,22 +1,27 @@
-.container {
+.footer-container {
   background-color: lightgray;
+  bottom: 0;
   display: flex;
+  position: fixed;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 
-.header-button {
+.footer-button {
   background-color: transparent;
   border-color: transparent;
   border-radius: 30%;
+  margin: 0.2rem;
+  padding: 0.2rem;
 }
 
-.header-button:hover {
+.footer-button:hover {
   background-color: rgb(175, 175, 175);
   border-color: rgb(175, 175, 175);
 }
 
-.header-button:focus {
+.footer-button:focus {
   background-color: rgb(175, 175, 175);
   border-color: rgb(175, 175, 175);
 }

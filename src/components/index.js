@@ -4,6 +4,7 @@ import RecipeDetailsHeader from './RecipeDetailsHeader';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients';
 import RecipeDetailsButton from './RecipeDetailsButton';
 import RecipeDetailsModal from './RecipeDetailsModal';
+import MenuInferior from '../pages/Components/MenuInferior';
 
 export {
   Loading,
@@ -12,4 +13,5 @@ export {
   RecipeDetailsIngredients,
   RecipeDetailsButton,
   RecipeDetailsModal,
+  MenuInferior,
 };

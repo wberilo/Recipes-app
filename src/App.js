@@ -5,6 +5,7 @@ import { Comidas,
   FavoriteRecipes,
   DoneRecipes,
   Header,
+  MenuInferior,
   Bebidas,
   InitialExplore,
   Explore,
@@ -72,6 +73,7 @@ function App() {
             component={ ExploreArea }
           />
         </Switch>
+        <MenuInferior />
       </BrowserRouter>
     </Provider>
   );
