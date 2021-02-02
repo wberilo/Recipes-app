@@ -6,9 +6,7 @@ import DoneCard from './Components/DoneCard';
 
 function DoneRecipes() {
   let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  if (doneRecipes === null) {
-    doneRecipes = [];
-  }
+  if (!doneRecipes) doneRecipes = [];
   const [shownRecipes, setShownRecipes] = useState(doneRecipes);
   return (
     <div>

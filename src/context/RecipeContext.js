@@ -4,10 +4,13 @@ import propTypes from 'prop-types';
 const RecipeContext = createContext();
 
 const RecipeProvider = ({ children }) => {
+  const initialIngredientsLength = 0;
   const [isFavorite, setIsFavorite] = useState(false);
   const [recipe, setRecipe] = useState([]);
   const [recommended, setRecommended] = useState([]);
   const [show, setShow] = useState(false);
+  const [disable, setDisable] = useState(false);
+  const [ingredientsLength, setIngredientsLength] = useState(initialIngredientsLength);
 
   const foodsFetched = [];
 
@@ -21,6 +24,10 @@ const RecipeProvider = ({ children }) => {
     setRecommended,
     show,
     setShow,
+    disable,
+    setDisable,
+    ingredientsLength,
+    setIngredientsLength,
   };
 
   return (
