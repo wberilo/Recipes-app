@@ -9,8 +9,10 @@ import Profile from './Profile';
 import ExploreArea from './ExploreArea';
 import Header from './Components/Header';
 import DoneRecipes from './DoneRecipes';
+import FavoriteRecipes from './FavoriteRecipes';
 
 export {
+  FavoriteRecipes,
   DoneRecipes,
   Header,
   Profile,
