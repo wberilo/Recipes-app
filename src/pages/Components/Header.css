@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: lightgray;
+}
+
+.header-button {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 30%;
+}
+
+.header-button:hover {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}
+
+.header-button:focus {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}

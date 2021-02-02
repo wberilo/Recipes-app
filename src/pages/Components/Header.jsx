@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
+import './Header.css';
 
 function Header(props) {
   const { location, history } = props;
@@ -61,6 +62,8 @@ function Header(props) {
   }
   let searchbttn = (
     <Button
+      variant="light"
+      className="header-button"
       type="button"
       data-testid="search-top-btn"
       src={ searchIcon }
@@ -82,8 +85,10 @@ function Header(props) {
     searchBar = <div />;
   }
   return (
-    <div>
+    <div className="container">
       <Button
+        variant="light"
+        className="header-button"
         type="button"
         data-testid="profile-top-btn"
         src={ profileIcon }

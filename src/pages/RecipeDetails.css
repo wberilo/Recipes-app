@@ -61,6 +61,14 @@
   padding: 0;
 }
 
+.in-progress {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  margin-top: 2px;
+}
+
 .checked {
   text-decoration: line-through;
 }

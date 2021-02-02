@@ -50,7 +50,7 @@ function RecipeDetailsIngredients({ path, recipeId }) {
   );
 
   const renderInProgress = () => (
-    <Form.Group>
+    <Form.Group className="in-progress">
       { ingredientsWithMeasures.map((igrd, index) => {
         const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
         let inProgressRecipe = null;

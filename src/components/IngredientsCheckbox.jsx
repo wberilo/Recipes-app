@@ -26,7 +26,7 @@ function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
     }
     input.remove();
     const newInput = document.createElement('input');
-    newInput.className = 'form-check-input';
+    newInput.className = 'form-check-input checkbox';
     newInput.type = 'checkbox';
     newInput.addEventListener('click', (event) => check(event));
     parent.insertBefore(newInput, label);
@@ -55,10 +55,11 @@ function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
 
   return (
     <Form.Check
-      className="ingredient"
+      className="ingredient-container"
       type="checkbox"
     >
       <Form.Check.Input
+        className="checkbox"
         type="checkbox"
         checked={ verify }
         onClick={ (event) => check(event) }
