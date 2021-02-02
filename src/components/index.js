@@ -1,6 +1,5 @@
 import Loading from './Loading';
-import RecipeVideo from './RecipeVideo';
-import RecommendedRecipes from './RecommendedRecipes';
+import RecommendedRecipesBody from './RecommendedRecipesBody';
 import RecipeDetailsHeader from './RecipeDetailsHeader';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients';
 import RecipeDetailsButton from './RecipeDetailsButton';
@@ -8,8 +7,7 @@ import RecipeDetailsModal from './RecipeDetailsModal';
 
 export {
   Loading,
-  RecipeVideo,
-  RecommendedRecipes,
+  RecommendedRecipesBody,
   RecipeDetailsHeader,
   RecipeDetailsIngredients,
   RecipeDetailsButton,

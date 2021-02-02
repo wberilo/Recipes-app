@@ -3,8 +3,7 @@ import propTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { RecipeContext } from '../context/RecipeContext';
 import { Loading,
-  RecipeVideo,
-  RecommendedRecipes,
+  RecommendedRecipesBody,
   RecipeDetailsHeader,
   RecipeDetailsIngredients,
   RecipeDetailsButton,
@@ -71,7 +70,6 @@ function RecipeDetails(props) {
   const {
     strMealThumb,
     strInstructions,
-    strYoutube,
   } = recipe[0];
 
   let image = strMealThumb;
@@ -110,7 +108,7 @@ function RecipeDetails(props) {
             Ingredientes
           </strong>
         </Card.Subtitle>
-        <RecipeDetailsIngredients />
+        <RecipeDetailsIngredients path={ pathname } recipeId={ id } />
         <Card.Subtitle
           className="instructions-title"
         >
@@ -123,15 +121,7 @@ function RecipeDetails(props) {
             { strInstructions }
           </Card.Text>
         </Card>
-        { pathname.includes('comidas') && <RecipeVideo videoString={ strYoutube } /> }
-        <Card.Subtitle
-          className="instructions-title"
-        >
-          <strong>
-            Recomendadas
-          </strong>
-        </Card.Subtitle>
-        <RecommendedRecipes path={ pathname } />
+        <RecommendedRecipesBody path={ pathname } recipeID={ id } />
       </Card.Body>
       <RecipeDetailsButton path={ pathname } recipeId={ id } />
       <RecipeDetailsModal />

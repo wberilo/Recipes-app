@@ -95,7 +95,9 @@ function RecipeDetailsHeader({ path, recipeId }) {
 
   const toClipBoard = () => {
     const textArea = document.createElement('textarea');
-    const text = `http://localhost:3000${path}`;
+    let type = 'comidas';
+    if (path.includes('bebida')) type = 'bebidas';
+    const text = `http://localhost:3000/${type}/${recipeId}`;
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.select();
