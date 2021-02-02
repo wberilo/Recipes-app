@@ -17,10 +17,9 @@ function ExploreArea(props) {
       const fetchAreas = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
         .then((data) => data.json());
       const min = 0;
-      const max = 5;
-      const max2 = 12;
-      setAreas(fetchAreas.meals.slice(min, max));
-      setFoodCards(fetched.meals.slice(min, max2));
+      const max = 12;
+      setAreas(fetchAreas.meals);
+      setFoodCards(fetched.meals.slice(min, max));
     }
     if (!areaSelected) {
       grabFoodItems();
@@ -48,6 +47,8 @@ function ExploreArea(props) {
     }
   }
 
+  console.log(areas);
+
   if (pathname.includes('bebida')) return <h1>Not Found</h1>;
 
   return (
@@ -59,6 +60,7 @@ function ExploreArea(props) {
         >
           <option
             value=""
+            data-testid="All-option"
           >
             All
           </option>
