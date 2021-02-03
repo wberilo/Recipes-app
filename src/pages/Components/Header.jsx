@@ -75,12 +75,12 @@ function Header(props) {
   if (!showSearch) {
     searchBar = <div />;
   }
-  
+
   let searchbttn = (
     <OverlayTrigger
       trigger="click"
       placement="bottom"
-      overlay={searchBar}
+      overlay={ searchBar }
     >
       <Button
         variant="light"
@@ -93,13 +93,13 @@ function Header(props) {
         <img src={ searchIcon } alt="profile icon" />
       </Button>
     </OverlayTrigger>
-    );
+  );
   if ((pathname.includes('explorar')
   && !pathname.includes('area'))
   || pathname === '/perfil'
   || pathname === '/receitas-feitas'
   || pathname === '/receitas-favoritas') {
-    searchbttn = <div />;
+    searchbttn = <div className="invisible-button" />;
   }
 
   return (

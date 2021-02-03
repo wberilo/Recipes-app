@@ -65,11 +65,11 @@ function Comidas({ location }) {
       setCatSelected(string);
     }
   }
-/*
+
   const parameter = 1;
 
-  if ((foodCards.length || categories.length) < parameter) return <Loading />
-*/
+  if ((foodCards.length || categories.length) < parameter) return <Loading />;
+
   return (
     <div>
       <div>
