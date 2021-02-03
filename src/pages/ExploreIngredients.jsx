@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import { Loading } from '../components';
+import './Comidas.css';
 
 function ExploreIngredients({ history }) {
   const { location } = history;
   const { pathname } = location;
-  const initialLength = 0;
+  const parameter = 1;
 
   const [ingredients, setIngredients] = useState([]);
 
@@ -28,15 +29,13 @@ function ExploreIngredients({ history }) {
     getIngredients();
   }, [pathname]);
 
+  if (ingredients.length < parameter ) return <Loading />;
+
   return (
     <CardDeck
-      style={ {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-      } }
+      className="cards-container"
     >
-      { ingredients.length > initialLength ? ingredients.map((ingredient, index) => {
+      { ingredients.map((ingredient, index) => {
         let url = 'thecocktaildb';
         let name = ingredient.strIngredient1;
         let redirect = '/bebidas';
@@ -55,28 +54,31 @@ function ExploreIngredients({ history }) {
           >
             <Card
               data-testid={ `${index}-ingredient-card` }
-              style={ {
-                width: '140px',
-                margin: '10px',
-                boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                  0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
-              } }
+              className="recipe-card"
             >
-              <Card.Img
-                data-testid={ `${index}-card-img` }
-                variant="top"
-                src={ `https://www.${url}.com/images/ingredients/${name}-Small.png` }
-              />
-              <Card.Body>
-                <Card.Title data-testid={ `${index}-card-name` }>
+              <div
+                className="recipe-image-container"
+              >
+                <Card.Img
+                  data-testid={ `${index}-card-img` }
+                  variant="top"
+                  src={ `https://www.${url}.com/images/ingredients/${name}-Small.png` }
+                />
+              </div>
+              <Card.Body
+                className="recipe-body"
+              >
+                <Card.Title
+                  data-testid={ `${index}-card-name` }
+                  className="recipe-title"
+                >
                   { name }
                 </Card.Title>
               </Card.Body>
             </Card>
           </Link>
         );
-      })
-        : <Loading /> }
+      })}
     </CardDeck>
   );
 }
