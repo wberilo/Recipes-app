@@ -85,7 +85,7 @@ function RecipeDetails(props) {
     let favorite = false;
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (favoriteRecipes) favorite = favoriteRecipes.some((item) => item.id === id);
-    if (favorite) setIsFavorite(true);
+    setIsFavorite(favorite);
   };
 
   checkFavorite();
