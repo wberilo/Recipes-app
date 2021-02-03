@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import './Header.css';
@@ -60,17 +62,38 @@ function Header(props) {
   && !pathname.includes('area'))) {
     return <div />;
   }
+
+  let searchBar = (
+    <Popover>
+      <input
+        className="header-input"
+        data-testid="search-input"
+      />
+    </Popover>
+  );
+
+  if (!showSearch) {
+    searchBar = <div />;
+  }
+  
   let searchbttn = (
-    <Button
-      variant="light"
-      className="header-button"
-      type="button"
-      data-testid="search-top-btn"
-      src={ searchIcon }
-      onClick={ () => setShowSearch(!showSearch) }
+    <OverlayTrigger
+      trigger="click"
+      placement="bottom"
+      overlay={searchBar}
     >
-      <img src={ searchIcon } alt="profile icon" />
-    </Button>);
+      <Button
+        variant="light"
+        className="header-button"
+        type="button"
+        data-testid="search-top-btn"
+        src={ searchIcon }
+        onClick={ () => setShowSearch(!showSearch) }
+      >
+        <img src={ searchIcon } alt="profile icon" />
+      </Button>
+    </OverlayTrigger>
+    );
   if ((pathname.includes('explorar')
   && !pathname.includes('area'))
   || pathname === '/perfil'
@@ -79,13 +102,8 @@ function Header(props) {
     searchbttn = <div />;
   }
 
-  let searchBar = <input data-testid="search-input" />;
-
-  if (!showSearch) {
-    searchBar = <div />;
-  }
   return (
-    <div className="container">
+    <div className="header-container">
       <Button
         variant="light"
         className="header-button"
@@ -96,9 +114,13 @@ function Header(props) {
       >
         <img src={ profileIcon } alt="profile icon" />
       </Button>
-      <h2 data-testid="page-title">{pagetitle}</h2>
+      <h2
+        className="header-title"
+        data-testid="page-title"
+      >
+        {pagetitle}
+      </h2>
       {searchbttn}
-      {searchBar}
     </div>
   );
 }

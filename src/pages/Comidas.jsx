@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import { Loading } from '../components';
 
-function Comidas(props) {
+function Comidas({ location }) {
   const [foodCards, setFoodCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
 
-  const { history, location } = props;
   const { ingredient } = location;
 
   useEffect(() => {
@@ -62,47 +65,69 @@ function Comidas(props) {
       setCatSelected(string);
     }
   }
+/*
+  const parameter = 1;
 
+  if ((foodCards.length || categories.length) < parameter) return <Loading />
+*/
   return (
     <div>
       <div>
-        <button
+        <Button
+          variant="outline-secondary"
           onClick={ () => onClick() }
           type="button"
           data-testid="All-category-filter"
         >
           Todas Categorias
-        </button>
+        </Button>
         {categories.map((card, index) => (
-          <button
+          <Button
+            variant="outline-secondary"
             data-testid={ `${card.strCategory}-category-filter` }
             onClick={ () => onClick(card.strCategory) }
             key={ index }
             type="button"
           >
             {card.strCategory}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="gallery">
+      <CardDeck
+        style={ {
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-around',
+        } }
+      >
         {foodCards.map((card, index) => (
-          <div
-            tabIndex="0"
-            role="button"
-            onClick={ () => history.push(`/comidas/${card.idMeal}`) }
-            onKeyDown={ () => console.log('a') }
+          <Link
             key={ index }
-            data-testid={ `${index}-recipe-card` }
+            to={ `/comidas/${card.idMeal}` }
           >
-            <p data-testid={ `${index}-card-name` }>{card.strMeal}</p>
-            <img
-              className="thumb"
-              src={ card.strMealThumb }
-              alt={ index }
-              data-testid={ `${index}-card-img` }
-            />
-          </div>))}
-      </div>
+            <Card
+              data-testid={ `${index}-recipe-card` }
+              style={ {
+                width: '140px',
+                margin: '10px',
+                boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
+              } }
+            >
+              <Card.Img
+                data-testid={ `${index}-card-img` }
+                variant="top"
+                src={ card.strMealThumb }
+              />
+              <Card.Body>
+                <Card.Title data-testid={ `${index}-card-name` }>
+                  { card.strMeal }
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        ))}
+      </CardDeck>
     </div>
   );
 }
