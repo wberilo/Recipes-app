@@ -5,10 +5,9 @@ import { Button } from 'react-bootstrap';
 import FavoriteCard from './Components/FavoriteCard';
 
 function FavoriteRecipes() {
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (!favoriteRecipes) favoriteRecipes = [];
   const [shownRecipes, setShownRecipes] = useState(favoriteRecipes);
-
-  console.log(shownRecipes);
 
   return (
     <div>

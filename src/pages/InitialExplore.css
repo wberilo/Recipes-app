@@ -13,3 +13,13 @@
 .area {
   margin: 0.6rem;
 }
+
+.profile-title {
+  font-size: 2.2rem;
+}
+
+.profile-btn {
+  font-size: 1.8rem;
+  margin-top: 1.8rem;
+  width: 100%;
+}

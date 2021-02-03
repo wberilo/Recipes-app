@@ -1,32 +1,44 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import './InitialExplore.css';
 
-function Profile(props) {
+function Profile({ history }) {
   const user = JSON.parse(localStorage.getItem('user'));
   let email = '';
   if (user) {
     email = user.email;
   }
-  const { history } = props;
   return (
-    <div>
-      <h1 data-testid="profile-email">{email}</h1>
-      <button
+    <div className="container profile">
+      <h1
+        data-testid="profile-email"
+        className="profile-title"
+      >
+        {email}
+      </h1>
+      <Button
+        className="profile-btn"
+        variant="outline-secondary"
         type="button"
         data-testid="profile-done-btn"
         onClick={ () => history.push('/receitas-feitas') }
       >
         Receitas Feitas
-      </button>
-      <button
+      </Button>
+      <Button
+        className="profile-btn"
+        variant="outline-secondary"
         type="button"
         data-testid="profile-favorite-btn"
         onClick={ () => history.push('/receitas-favoritas') }
       >
         Receitas Favoritas
-      </button>
-      <button
+      </Button>
+      <Button
+        className="profile-btn"
+        variant="outline-secondary"
         type="button"
         data-testid="profile-logout-btn"
         onClick={ () => {
@@ -35,7 +47,7 @@ function Profile(props) {
         } }
       >
         Sair
-      </button>
+      </Button>
     </div>
   );
 }
