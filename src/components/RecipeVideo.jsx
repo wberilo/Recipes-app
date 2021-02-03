@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import '../pages/RecipeDetails.css';
 
 function RecipeVideo({ videoString }) {
+  if (!videoString) return null;
   const index = videoString.indexOf('=');
   const start = index + 1;
   const videoId = videoString.slice(start, videoString.length);

@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import { Loading } from '../components';
+import './Comidas.css';
 
 function Comidas({ location }) {
   const [foodCards, setFoodCards] = useState([]);
@@ -72,8 +73,9 @@ function Comidas({ location }) {
 
   return (
     <div>
-      <div>
+      <div className="categories-container">
         <Button
+          className="category-btn"
           variant="outline-secondary"
           onClick={ () => onClick() }
           type="button"
@@ -83,6 +85,7 @@ function Comidas({ location }) {
         </Button>
         {categories.map((card, index) => (
           <Button
+            className="category-btn"
             variant="outline-secondary"
             data-testid={ `${card.strCategory}-category-filter` }
             onClick={ () => onClick(card.strCategory) }
@@ -94,11 +97,7 @@ function Comidas({ location }) {
         ))}
       </div>
       <CardDeck
-        style={ {
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-        } }
+        className="cards-container"
       >
         {foodCards.map((card, index) => (
           <Link
@@ -107,20 +106,22 @@ function Comidas({ location }) {
           >
             <Card
               data-testid={ `${index}-recipe-card` }
-              style={ {
-                width: '140px',
-                margin: '10px',
-                boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                  0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
-              } }
+              className="recipe-card"
             >
-              <Card.Img
-                data-testid={ `${index}-card-img` }
-                variant="top"
-                src={ card.strMealThumb }
-              />
-              <Card.Body>
-                <Card.Title data-testid={ `${index}-card-name` }>
+              <div className="recipe-image-container">
+                <Card.Img
+                  data-testid={ `${index}-card-img` }
+                  variant="top"
+                  src={ card.strMealThumb }
+                />
+              </div>
+              <Card.Body
+                className="recipe-body"
+              >
+                <Card.Title
+                  className="recipe-title"
+                  data-testid={ `${index}-card-name` }
+                >
                   { card.strMeal }
                 </Card.Title>
               </Card.Body>
