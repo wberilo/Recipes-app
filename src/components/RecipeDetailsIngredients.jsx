@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../context/RecipeContext';
-import IngredientsCheckbox from './IngredientsCheckbox';
+import RecipeDetailsIngredientsInProgress from './RecipeDetailsIngredientsInProgress';
 import renderIngredient from '../services';
 import '../pages/RecipeDetails.css';
 
@@ -49,47 +48,14 @@ function RecipeDetailsIngredients({ path, recipeId }) {
     </ListGroup>
   );
 
-  const renderInProgress = () => (
-    <Form.Group className="in-progress">
-      { ingredientsWithMeasures.map((igrd, index) => {
-        const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        let inProgressRecipe = null;
-        if (inProgressRecipes) {
-          inProgressRecipe = inProgressRecipes[`${key}`][`${recipeId}`];
-        }
-        let isDone = false;
-        let labelClass = '';
-        if (inProgressRecipe) {
-          isDone = inProgressRecipe
-            .some((item) => {
-              let string = `${igrd.name} | ${igrd.measure}`;
-              if (path.includes('bebida')) string = `${igrd.name}`;
-              const ingredient = string.trim();
-              return item.includes(ingredient);
-            });
-        }
-        if (isDone) labelClass = 'checked';
-        return (
-          <div
-            data-testid={ `${index}-ingredient-step` }
-            key={ igrd.name }
-          >
-            <IngredientsCheckbox
-              recipeID={ recipeId }
-              type={ key }
-              verify={ isDone }
-              lbClass={ labelClass }
-              igd={ igrd }
-            />
-          </div>
-        );
-      })}
-    </Form.Group>
-  );
-
   return (
     <Card className="instructions">
-      { !path.includes('progress') ? renderDetails() : renderInProgress() }
+      { !path.includes('progress') ? renderDetails() : <RecipeDetailsIngredientsInProgress
+        ingredients={ ingredientsWithMeasures }
+        rcpId={ recipeId }
+        foodOrDrink={ key }
+        pathname={ path }
+      /> }
     </Card>
   );
 }

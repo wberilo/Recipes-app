@@ -25,7 +25,8 @@ function DoneRecipes() {
         <Button
           className="filter-btn"
           onClick={
-            () => setShownRecipes(doneRecipes.filter((recipe) => recipe.type === 'comida'))
+            () => setShownRecipes(doneRecipes.filter((recipe) => (
+              recipe.type === 'comida')))
           }
           data-testid="filter-by-food-btn"
           variant="outline-secondary"
@@ -35,7 +36,8 @@ function DoneRecipes() {
         <Button
           className="filter-btn"
           onClick={
-            () => setShownRecipes(doneRecipes.filter((recipe) => recipe.type === 'bebida'))
+            () => setShownRecipes(doneRecipes.filter((recipe) => (
+              recipe.type === 'bebida')))
           }
           data-testid="filter-by-drink-btn"
           variant="outline-secondary"
