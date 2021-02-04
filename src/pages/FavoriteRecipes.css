@@ -16,6 +16,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   flex: row;
+  height: 7rem;
   margin: 0.9rem;
 }
 
@@ -23,5 +24,23 @@
   border-bottom-left-radius: 2%;
   border-top-left-radius: 2%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
+}
+  
+.text-container {
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 1.7rem;
+  margin-top: 1rem;
+}
+
+.icon {
+  margin: 0 1rem;
 }

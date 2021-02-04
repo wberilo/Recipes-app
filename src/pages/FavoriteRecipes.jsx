@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 // import PropTypes from 'prop-types';
+import { RecipeDetailsModal } from '../components';
 import Button from 'react-bootstrap/Button';
 import FavoriteCard from './Components/FavoriteCard';
 import './FavoriteRecipes.css';
@@ -12,6 +13,7 @@ function FavoriteRecipes() {
 
   return (
     <div>
+      <RecipeDetailsModal />
       <div className="buttons-container">
         <Button
           className="filter-btn"

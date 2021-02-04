@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
+import { RecipeContext } from '../../context/RecipeContext';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import shareIcon from '../../images/shareIcon.svg';
@@ -11,13 +11,19 @@ import '../FavoriteRecipes.css';
 function grabTop(recipe, index) {
   if (recipe.type === 'bebida') {
     return (
-      <Card.Subtitle data-testid={ `${index}-horizontal-top-text` }>
+      <Card.Subtitle
+        className="text-muted"
+        data-testid={ `${index}-horizontal-top-text` }
+      >
         { `${recipe.alcoholicOrNot} - ${recipe.category}` }
       </Card.Subtitle>
     );
   }
   return (
-    <Card.Subtitle data-testid={ `${index}-horizontal-top-text` }>
+    <Card.Subtitle
+      className="text-muted"
+      data-testid={ `${index}-horizontal-top-text` }
+    >
       { `${recipe.area} - ${recipe.category}` }
     </Card.Subtitle>);
 }
@@ -31,11 +37,7 @@ function removeFromFavorites(id, setShownRecipes) {
 
 function FavoriteCard(props) {
   const { recipe, index, history, setShownRecipes } = props;
-  const [showCopied, setShowCopied] = useState(false);
-  let shareComponent = <img alt="share img" src={ shareIcon } />;
-  if (showCopied) {
-    shareComponent = 'Link copiado!';
-  }
+  const { setShow } = useContext(RecipeContext);
   return (
     <div
       className="favor-recipe-container"
@@ -70,7 +72,7 @@ function FavoriteCard(props) {
           <Image
             className="icon"
             onClick={ () => {
-              setShowCopied(true);
+              setShow(true);
               navigator.clipboard.writeText(
                 `${window.location.origin}/${recipe.type}s/${recipe.id}`,
               );
