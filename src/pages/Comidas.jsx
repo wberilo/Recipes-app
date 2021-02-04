@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipeContext } from '../context/RecipeContext';
+import MenuInferior from './Components/MenuInferior';
 
 function Comidas(props) {
   const { searched } = useContext(RecipeContext);
@@ -109,6 +110,7 @@ function Comidas(props) {
             />
           </div>))}
       </div>
+      <MenuInferior />
     </div>
   );
 }
