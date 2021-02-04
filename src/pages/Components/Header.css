@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
   width: 100%;
 }
 
@@ -16,6 +17,12 @@
   border-color: transparent;
   border-radius: 30%;
   margin: 0.2rem;
+}
+
+.profile-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header-button:hover {

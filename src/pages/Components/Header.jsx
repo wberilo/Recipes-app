@@ -104,16 +104,18 @@ function Header(props) {
 
   return (
     <div className="header-container">
-      <Button
-        variant="light"
-        className="header-button"
-        type="button"
-        data-testid="profile-top-btn"
-        src={ profileIcon }
-        onClick={ () => history.push('/perfil') }
-      >
-        <img src={ profileIcon } alt="profile icon" />
-      </Button>
+      <div className="profile-button-container">
+        <Button
+          className="header-button"
+          variant="light"
+          type="button"
+          data-testid="profile-top-btn"
+          src={ profileIcon }
+          onClick={ () => history.push('/perfil') }
+        >
+          <img src={ profileIcon } alt="profile icon" />
+        </Button>
+      </div>
       <h2
         className="header-title"
         data-testid="page-title"

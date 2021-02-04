@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 import shareIcon from '../../images/shareIcon.svg';
 import favoriteIcon from '../../images/blackHeartIcon.svg';
+import '../FavoriteRecipes.css';
 
 function grabTop(recipe, index) {
   if (recipe.type === 'bebida') {
     return (
-      <p data-testid={ `${index}-horizontal-top-text` }>
+      <Card.Subtitle data-testid={ `${index}-horizontal-top-text` }>
         { `${recipe.alcoholicOrNot} - ${recipe.category}` }
-      </p>
+      </Card.Subtitle>
     );
   }
   return (
-    <p data-testid={ `${index}-horizontal-top-text` }>
+    <Card.Subtitle data-testid={ `${index}-horizontal-top-text` }>
       { `${recipe.area} - ${recipe.category}` }
-    </p>);
+    </Card.Subtitle>);
 }
 
 function removeFromFavorites(id, setShownRecipes) {
@@ -34,42 +37,58 @@ function FavoriteCard(props) {
     shareComponent = 'Link copiado!';
   }
   return (
-    <Card key={ index }>
-      { grabTop(recipe, index) }
-      <a
-        href={ `/${recipe.type}s/${recipe.id}` }
-        data-testid={ `${index}-horizontal-name` }
+    <div
+      className="favor-recipe-container"
+      key={ index }
+    >
+      <div
+        className="favor-image-container"
       >
-        { recipe.name }
-      </a>
-      <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
-      <Button
-        onClick={ () => {
-          setShowCopied(true);
-          navigator.clipboard.writeText(
-            `${window.location.origin}/${recipe.type}s/${recipe.id}`,
-          );
-        } }
-        src={ shareIcon }
-        data-testid={ `${index}-horizontal-share-btn` }
-      >
-        { shareComponent }
-      </Button>
-      <Button
-        onClick={ () => removeFromFavorites(recipe.id, setShownRecipes) }
-        src={ favoriteIcon }
-        data-testid={ `${index}-horizontal-favorite-btn` }
-      >
-        <img alt="favorite img" src={ favoriteIcon } />
-      </Button>
-      <Card.Img
-        onClick={ () => history.push(`/${recipe.type}s/${recipe.id}`) }
-        className="thumb"
-        src={ recipe.image }
-        data-testid={ `${index}-horizontal-image` }
-        alt="receita"
-      />
-    </Card>
+        <Image
+          onClick={ () => history.push(`/${recipe.type}s/${recipe.id}`) }
+          className="thumb"
+          src={ recipe.image }
+          data-testid={ `${index}-horizontal-image` }
+          alt="receita"
+          fluid
+        />
+      </div>
+      <div className="text-icon-container">
+        <div className="text-container">
+          { grabTop(recipe, index) }
+          <a
+            href={ `/${recipe.type}s/${recipe.id}` }
+            data-testid={ `${index}-horizontal-name` }
+          >
+            <Card.Title>
+              { recipe.name }
+            </Card.Title>
+          </a>
+          <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
+        </div>
+        <div className="icon-container">
+          <Image
+            className="icon"
+            onClick={ () => {
+              setShowCopied(true);
+              navigator.clipboard.writeText(
+                `${window.location.origin}/${recipe.type}s/${recipe.id}`,
+              );
+            } }
+            src={ shareIcon }
+            data-testid={ `${index}-horizontal-share-btn` }
+            fluid
+          />
+          <Image
+            className="icon"
+            onClick={ () => removeFromFavorites(recipe.id, setShownRecipes) }
+            src={ favoriteIcon }
+            data-testid={ `${index}-horizontal-favorite-btn` }
+            fluid
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
