@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { RecipeContext } from '../context/RecipeContext';
 
 function Bebidas(props) {
+  const { searched } = useContext(RecipeContext);
   const [beverageCards, setBeverageCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
@@ -10,6 +12,11 @@ function Bebidas(props) {
   const { history, location } = props;
   const { ingredient } = location;
 
+  useEffect(() => {
+    if (searched !== undefined) {
+      setBeverageCards(searched);
+    }
+  }, [searched]);
   useEffect(() => {
     async function grabFoodItems() {
       const fetched = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')

@@ -11,10 +11,13 @@ const RecipeProvider = ({ children }) => {
   const [show, setShow] = useState(false);
   const [disable, setDisable] = useState(false);
   const [ingredientsLength, setIngredientsLength] = useState(initialIngredientsLength);
+  const [searched, setSearched] = useState([]);
 
   const foodsFetched = [];
 
   const context = {
+    searched,
+    setSearched,
     isFavorite,
     setIsFavorite,
     foodsFetched,
