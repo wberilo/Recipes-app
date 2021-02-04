@@ -18,7 +18,6 @@ function Login({ history }) {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify({ email: userEmail }));
-    console.log(history);
     history.push('/comidas');
   };
 

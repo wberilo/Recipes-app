@@ -5,17 +5,76 @@ import { RecipeContext } from '../context/RecipeContext';
 import '../pages/RecipeDetails.css';
 
 function RecipeDetailsButton({ path, recipeId }) {
-  const { disable, setDisable, ingredientsLength } = useContext(RecipeContext);
+  const { disable, setDisable, ingredientsLength, recipe } = useContext(RecipeContext);
+
+  const finishRecipe = () => {
+    let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (!doneRecipes) doneRecipes = [];
+    const alreadyDone = doneRecipes.some((item) => item.id === recipeId);
+    if (alreadyDone) return null;
+    const weekDays = ['Segunda',
+      'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+    const months = ['Janeiro', 'Feveiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const {
+      strMeal,
+      strDrink,
+      strArea,
+      strAlcoholic,
+      strMealThumb,
+      strDrinkThumb,
+      strCategory,
+      strTags,
+    } = recipe[0];
+    let name = strMeal;
+    let type = 'comida';
+    let area = strArea;
+    let alcoholicOrNot = '';
+    let image = strMealThumb;
+    let tags = [strTags];
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+    const weekDay = weekDays[date.getDay()];
+    const doneDate = `${weekDay}, ${day} de ${month} de ${year}`;
+
+    if (path.includes('bebida')) {
+      name = strDrink;
+      type = 'bebida';
+      area = '';
+      alcoholicOrNot = strAlcoholic;
+      image = strDrinkThumb;
+    }
+
+    if (!tags) tags = [];
+
+    const newDoneRecipe = {
+      id: recipeId,
+      type,
+      area,
+      category: strCategory,
+      alcoholicOrNot,
+      name,
+      image,
+      doneDate,
+      tags,
+    };
+    doneRecipes.push(newDoneRecipe);
+    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
+  };
 
   const renderButton = (boolean, array) => {
     let type = 'start';
     let string = 'Continuar Receita';
     let redirect = `${path}/in-progress`;
+    let click = null;
     if (!boolean) string = 'Iniciar Receita';
     if (path.includes('progress')) {
       string = 'Finalizar receita';
       type = 'finish';
       redirect = '/receitas-feitas';
+      click = finishRecipe;
       if (array.length !== ingredientsLength) setDisable(true);
     }
     if (!path.includes('progress')) setDisable(false);
@@ -27,6 +86,7 @@ function RecipeDetailsButton({ path, recipeId }) {
             variant="success"
             data-testid={ `${type}-recipe-btn` }
             disabled={ disable }
+            onClick={ click }
           >
             <strong>
               { string }
