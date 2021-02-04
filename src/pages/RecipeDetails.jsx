@@ -65,7 +65,7 @@ function RecipeDetails(props) {
     getRecommended();
   }, [setRecommended, pathname]);
 
-  if (!recipe[0] || !recommended[0]) return <Loading />;
+  if (recipe === undefined || !recipe[0] || !recommended[0]) return <Loading />;
 
   const {
     strMealThumb,
