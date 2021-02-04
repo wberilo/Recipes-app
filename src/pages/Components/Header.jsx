@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 
@@ -76,7 +77,7 @@ function Header(props) {
     searchbttn = <div />;
   }
 
-  let searchBar = <input data-testid="search-input" />;
+  let searchBar = <SearchBar />;
 
   if (!showSearch) {
     searchBar = <div />;
