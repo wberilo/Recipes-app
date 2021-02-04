@@ -24,9 +24,12 @@ function MenuInferior({ location }) {
             variant="light"
             className="footer-button"
             type="button"
-            data-testid="drinks-bottom-btn"
           >
-            <img src={ DrinkImage } alt="drink" />
+            <img
+              data-testid="drinks-bottom-btn"
+              src={ DrinkImage }
+              alt="drink"
+              />
           </Button>
         </Link>
         <Link
@@ -37,9 +40,12 @@ function MenuInferior({ location }) {
             variant="light"
             className="footer-button"
             type="button"
-            data-testid="explore-bottom-btn"
           >
-            <img src={ ExploreImage } alt="explore" />
+            <img
+              src={ ExploreImage }
+              alt="explore"
+              data-testid="explore-bottom-btn"
+            />
           </Button>
         </Link>
         <Link
@@ -50,9 +56,12 @@ function MenuInferior({ location }) {
             variant="light"
             className="footer-button"
             type="button"
-            data-testid="food-bottom-btn"
           >
-            <img src={ FoodImage } alt="food" />
+            <img
+              src={ FoodImage }
+              alt="food"
+              data-testid="food-bottom-btn"
+            />
           </Button>
         </Link>
       </div>
