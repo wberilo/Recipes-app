@@ -12,8 +12,6 @@ function RecipeDetailsButton({ path, recipeId }) {
     if (!doneRecipes) doneRecipes = [];
     const alreadyDone = doneRecipes.some((item) => item.id === recipeId);
     if (alreadyDone) return null;
-    const weekDays = ['Segunda',
-      'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
     const months = ['Janeiro', 'Feveiro', 'Março', 'Abril', 'Maio', 'Junho',
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
     const {
@@ -31,13 +29,12 @@ function RecipeDetailsButton({ path, recipeId }) {
     let area = strArea;
     let alcoholicOrNot = '';
     let image = strMealThumb;
-    let tags = [strTags];
+    let tags = [];
     const date = new Date();
     const year = date.getFullYear();
     const month = months[date.getMonth()];
     const day = date.getDate();
-    const weekDay = weekDays[date.getDay()];
-    const doneDate = `${weekDay}, ${day} de ${month} de ${year}`;
+    const doneDate = `${day} de ${month} de ${year}`;
 
     if (path.includes('bebida')) {
       name = strDrink;
@@ -47,7 +44,7 @@ function RecipeDetailsButton({ path, recipeId }) {
       image = strDrinkThumb;
     }
 
-    if (!tags) tags = [];
+    if (strTags) tags = strTags.split(',');
 
     const newDoneRecipe = {
       id: recipeId,

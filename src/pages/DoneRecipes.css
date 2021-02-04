@@ -1,0 +1,76 @@
+.buttons-container {
+  display: flex;
+  flex: row;
+  justify-content: center;
+  margin: 0.6rem;
+}
+
+.filter-btn {
+  margin: 0.3rem;
+  width: 100%;
+}
+
+.favor-recipe-container {
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 2%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex: row;
+  height: 7rem;
+  margin: 0.9rem;
+}
+
+.favor-image-container {
+  border-bottom-left-radius: 2%;
+  border-top-left-radius: 2%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+  
+.text-container {
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+.recipe-subtitle {
+  font-size: 0.8rem;
+}
+
+.recipe-name {
+  font-size: 1rem;
+}
+
+.done-date {
+  font-size: 0.7rem;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.3rem 0.3rem 0.3rem 0.6rem;
+}
+
+.done-icon {
+  cursor: pointer;
+  margin: 0;
+  width: 20px;
+}
+
+.arrow:hover {
+  transform: rotate(180deg);
+  transition-duration: 1s;
+}
+
+.badge-container {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: center;
+  margin-left: 0.4rem;
+  overflow: hidden;
+}
+
+.badge {
+  margin: 0 0.1rem;
+}
