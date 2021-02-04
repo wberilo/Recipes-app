@@ -29,7 +29,7 @@ function MenuInferior({ location }) {
               data-testid="drinks-bottom-btn"
               src={ DrinkImage }
               alt="drink"
-              />
+            />
           </Button>
         </Link>
         <Link

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import SearchBar from './SearchBar';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import './Header.css';
@@ -65,10 +66,7 @@ function Header(props) {
 
   let searchBar = (
     <Popover>
-      <input
-        className="header-input"
-        data-testid="search-input"
-      />
+      <SearchBar />
     </Popover>
   );
 

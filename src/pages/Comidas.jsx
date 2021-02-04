@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import { Loading } from '../components';
+import { RecipeContext } from '../context/RecipeContext';
 import './Comidas.css';
 
 function Comidas({ location }) {
+  const { searched } = useContext(RecipeContext);
   const [foodCards, setFoodCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
 
   const { ingredient } = location;
-
+  useEffect(() => {
+    if (searched !== undefined) {
+      setFoodCards(searched);
+    }
+  }, [searched]);
   useEffect(() => {
     async function grabFoodItems() {
       const fetched = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
