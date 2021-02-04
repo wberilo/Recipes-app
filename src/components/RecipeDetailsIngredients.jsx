@@ -62,7 +62,8 @@ function RecipeDetailsIngredients({ path, recipeId }) {
         if (inProgressRecipe) {
           isDone = inProgressRecipe
             .some((item) => {
-              const string = `${igrd.name} | ${igrd.measure}`;
+              let string = `${igrd.name} | ${igrd.measure}`;
+              if (path.includes('bebida')) string = `${igrd.name}`;
               const ingredient = string.trim();
               return item.includes(ingredient);
             });
