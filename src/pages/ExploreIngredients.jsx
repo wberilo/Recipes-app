@@ -29,7 +29,7 @@ function ExploreIngredients({ history }) {
     getIngredients();
   }, [pathname]);
 
-  if (ingredients.length < parameter ) return <Loading />;
+  if (ingredients.length < parameter) return <Loading />;
 
   return (
     <CardDeck

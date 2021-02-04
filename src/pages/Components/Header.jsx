@@ -77,22 +77,24 @@ function Header(props) {
   }
 
   let searchbttn = (
-    <OverlayTrigger
-      trigger="click"
-      placement="bottom"
-      overlay={ searchBar }
-    >
-      <Button
-        variant="light"
-        className="header-button"
-        type="button"
-        data-testid="search-top-btn"
-        src={ searchIcon }
-        onClick={ () => setShowSearch(!showSearch) }
+    <div className="profile-button-container">
+      <OverlayTrigger
+        trigger="click"
+        placement="bottom"
+        overlay={ searchBar }
       >
-        <img src={ searchIcon } alt="profile icon" />
-      </Button>
-    </OverlayTrigger>
+        <Button
+          variant="light"
+          className="header-button"
+          type="button"
+          data-testid="search-top-btn"
+          src={ searchIcon }
+          onClick={ () => setShowSearch(!showSearch) }
+        >
+          <img src={ searchIcon } alt="profile icon" />
+        </Button>
+      </OverlayTrigger>
+    </div>
   );
   if ((pathname.includes('explorar')
   && !pathname.includes('area'))

@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RecipeContext } from '../../context/RecipeContext';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import { RecipeContext } from '../../context/RecipeContext';
 import shareIcon from '../../images/shareIcon.svg';
 import favoriteIcon from '../../images/blackHeartIcon.svg';
 import '../FavoriteRecipes.css';

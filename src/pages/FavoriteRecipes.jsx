@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 // import PropTypes from 'prop-types';
-import { RecipeDetailsModal } from '../components';
 import Button from 'react-bootstrap/Button';
+import { RecipeDetailsModal } from '../components';
 import FavoriteCard from './Components/FavoriteCard';
 import './FavoriteRecipes.css';
 
