@@ -29,13 +29,32 @@ function grabTop(recipe, index) {
     </Card.Subtitle>);
 }
 
+const notFavorite = (
+  <svg
+    className="done-icon heart"
+    viewBox="0 0 32 29.6"
+    onClick={ (event) => checkFavorite(event) }
+  >
+    <path
+      d={ `M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,
+      0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+      c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z` }
+    />
+  </svg>
+)
+
 const checkFavorite = ({ target }) => {
-  target.className.baseVal = 'done-icon favorite';
+  let icon = target;
+  const firstParameter = 0;
+  if (icon.className.baseVal.length === firstParameter) icon = target.parentElement;
+  if (icon.className.baseVal.includes('heart')) {
+    return icon.className.baseVal = 'done-icon favorite';
+  };
+  icon.className.baseVal = 'done-icon heart';
 };
 
 function DoneCard(props) {
   const { recipe, index, history } = props;
-  // const [showCopied, setShowCopied] = useState(false);
   const { setShow } = useContext(RecipeContext);
   return (
     <div
@@ -74,7 +93,7 @@ function DoneCard(props) {
         </div>
         <div className="icons-container">
           <Image
-            className="done-icon"
+            className="done-icon share"
             onClick={ () => {
               setShow(true);
               navigator.clipboard.writeText(
@@ -85,17 +104,7 @@ function DoneCard(props) {
             data-testid={ `${index}-horizontal-share-btn` }
             fluid
           />
-          <svg
-            className="done-icon heart"
-            viewBox="0 0 32 29.6"
-            onClick={ (event) => checkFavorite(event) }
-          >
-            <path
-              d={ `M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,
-              0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-              c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z` }
-            />
-          </svg>
+          { notFavorite }
           <Image
             className="done-icon arrow"
             onClick={ null }

@@ -59,8 +59,16 @@
   width: 20px;
 }
 
+.share:hover {
+  animation: small 1s ease infinite;
+}
+
 .favorite {
   fill: red;
+}
+
+.favorite:hover {
+  animation: small 1s ease infinite;
 }
 
 .heart {
@@ -97,4 +105,13 @@
   50% { transform: scale(1.3); }
 
   100% { transform: scale(1); }
+}
+
+@keyframes small {
+
+  0% { transform: scale(0.7); }
+
+  50% { transform: scale(0.4); }
+
+  100% { transform: scale(0.7); }
 }
