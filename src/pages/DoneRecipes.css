@@ -55,7 +55,22 @@
 .done-icon {
   cursor: pointer;
   margin: 0;
+  overflow: visible;
   width: 20px;
+}
+
+.favorite {
+  fill: red;
+}
+
+.heart {
+  fill: white;
+  stroke: black;
+  stroke-width: 1.7px;
+}
+
+.heart:hover {
+  animation: pulse 1s ease infinite;
 }
 
 .arrow:hover {
@@ -73,4 +88,10 @@
 
 .badge {
   margin: 0 0.1rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }

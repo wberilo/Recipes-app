@@ -6,7 +6,6 @@ import Image from 'react-bootstrap/Image';
 import Badge from 'react-bootstrap/Badge';
 import { RecipeContext } from '../../context/RecipeContext';
 import shareIcon from '../../images/shareIcon.svg';
-import favoriteIcon from '../../images/blackHeartIcon.svg';
 import arrowIcon from '../../images/arrowIcon.svg';
 import '../DoneRecipes.css';
 
@@ -28,6 +27,10 @@ function grabTop(recipe, index) {
     >
       { `${recipe.area} - ${recipe.category}` }
     </Card.Subtitle>);
+}
+
+const checkFavorite = ({ target }) => {
+  target.className.baseVal = 'done-icon favorite';
 }
 
 function DoneCard(props) {
@@ -82,12 +85,16 @@ function DoneCard(props) {
             data-testid={ `${index}-horizontal-share-btn` }
             fluid
           />
-          <Image
-            className="done-icon"
-            onClick={ null }
-            src={ favoriteIcon }
-            fluid
-          />
+          <svg
+            className="done-icon heart"
+            viewBox="0 0 32 29.6"
+            onClick={ (event) => checkFavorite(event) }
+          >
+            <path
+              d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+	            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
+            />
+          </svg>
           <Image
             className="done-icon arrow"
             onClick={ null }
