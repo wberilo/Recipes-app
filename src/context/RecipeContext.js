@@ -32,6 +32,8 @@ const RecipeProvider = ({ children }) => {
     setDisable,
     ingredientsLength,
     setIngredientsLength,
+    darkMode,
+    setDarkMode,
   };
 
   return (
