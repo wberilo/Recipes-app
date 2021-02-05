@@ -2,9 +2,9 @@
   background-color: lightgray;
   bottom: 0;
   display: flex;
-  position: fixed;
   flex-direction: row;
   justify-content: space-between;
+  position: fixed;
   width: 100%;
 }
 
