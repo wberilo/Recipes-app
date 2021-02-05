@@ -12,7 +12,7 @@ function DoneRecipes() {
   const [shownRecipes, setShownRecipes] = useState(doneRecipes);
   return (
     <div>
-      <RecipeDetailsModal />
+      <RecipeDetailsModal className="modal" />
       <div className="buttons-container">
         <Button
           className="filter-btn"

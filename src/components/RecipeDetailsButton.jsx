@@ -103,7 +103,10 @@ function RecipeDetailsButton({ path, recipeId }) {
     let inProgressRecipe = [];
     if (path.includes('comida')) key = 'meals';
     if (doneRecipes) alreadyDone = doneRecipes.some((item) => item.id === recipeId);
-    if (alreadyDone) return null;
+    if (alreadyDone) {
+      if (path.includes('progress')) return renderButton(true, inProgressRecipe);
+      return null;
+    }
     if (inProgressRecipes) {
       const id = Object.keys(inProgressRecipes[`${key}`]);
       inProgress = id.some((item) => item === recipeId);

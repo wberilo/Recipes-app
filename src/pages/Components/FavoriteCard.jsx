@@ -60,9 +60,10 @@ function FavoriteCard(props) {
           { grabTop(recipe, index) }
           <a
             href={ `/${recipe.type}s/${recipe.id}` }
-            data-testid={ `${index}-horizontal-name` }
           >
-            <Card.Title>
+            <Card.Title
+              data-testid={ `${index}-horizontal-name` }
+            >
               { recipe.name }
             </Card.Title>
           </a>

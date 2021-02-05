@@ -60,7 +60,7 @@
 }
 
 .share:hover {
-  animation: small 1s ease infinite;
+  animation: shake 1s ease infinite;
 }
 
 .favorite {
@@ -82,8 +82,7 @@
 }
 
 .arrow:hover {
-  transform: rotate(180deg);
-  transition-duration: 1s;
+  animation: rotate 2s ease infinite;
 }
 
 .badge-container {
@@ -114,4 +113,34 @@
   50% { transform: scale(0.4); }
 
   100% { transform: scale(0.7); }
+}
+
+@keyframes shake {
+
+  0% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-25deg);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes rotate {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
