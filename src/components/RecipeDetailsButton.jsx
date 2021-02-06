@@ -95,18 +95,11 @@ function RecipeDetailsButton({ path, recipeId }) {
   };
 
   const checkButton = () => {
-    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    let alreadyDone = false;
     let inProgress = false;
     let key = 'cocktails';
     let inProgressRecipe = [];
     if (path.includes('comida')) key = 'meals';
-    if (doneRecipes) alreadyDone = doneRecipes.some((item) => item.id === recipeId);
-    if (alreadyDone) {
-      if (path.includes('progress')) return renderButton(true, inProgressRecipe);
-      return null;
-    }
     if (inProgressRecipes) {
       const id = Object.keys(inProgressRecipes[`${key}`]);
       inProgress = id.some((item) => item === recipeId);
