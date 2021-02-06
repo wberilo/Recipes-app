@@ -35,12 +35,39 @@
   border-color: rgb(175, 175, 175);
 }
 
-.header-input {
+.invisible-button {
+  width: 55px;
+}
+
+.search-bar {
   border-color: transparent;
   border-radius: 3%;
   box-shadow: 0 0.41px 3px 3px rgb(69, 148, 252);
+  width: 100%
 }
 
-.invisible-button {
-  width: 55px;
+.search-input {
+  font-size: 1.09rem;
+  margin: 0.2rem;
+  width: 74%;
+}
+
+.search-button {
+  margin-bottom: 5px;
+  margin-left: 1px;
+  margin-top: 0;
+  padding: 0.25rem;
+}
+
+.search-radio-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 0.2rem;
+  margin-top: 0;
+}
+
+.search-ingredient {
+  margin-right: 2rem;
 }
