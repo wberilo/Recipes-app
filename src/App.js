@@ -14,6 +14,7 @@ import { Comidas,
   RecipeDetails,
   Profile } from './pages';
 import Login from './pages/Login';
+import { DarkMode } from './components';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,6 +22,7 @@ function App() {
   return (
     <Provider>
       <BrowserRouter>
+        <DarkMode />
         <Header />
         <Switch>
           <Route exact path="/" component={ Login } />
