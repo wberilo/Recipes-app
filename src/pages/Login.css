@@ -11,10 +11,6 @@
   width: 90%;
 }
 
-.login-input:focus {
-  border-color: rgb(175, 175, 175);
-}
-
 .password-input {
   border-radius: 100px 100px 100px 100px;
   margin-bottom: 3rem;

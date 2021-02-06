@@ -80,15 +80,26 @@ function RecipeDetailsHeader({ path, recipeId }) {
 
   const renderHeartIcon = () => {
     let heartImage = whiteHeartIcon;
-    if (isFavorite) heartImage = blackHeartIcon;
+    let heartClass = "recipe-icon recipe-heart"
+    if (isFavorite) {
+      heartImage = blackHeartIcon;
+      heartClass = "recipe-icon recipe-favorite"
+    }
     return (
-      <div className="icon heart">
-        <Image
-          src={ heartImage }
-          data-testid="favorite-btn"
-          onClick={ () => favorRecipe() }
-          fluid
-        />
+      <div>
+        <svg
+            className={ heartClass }
+            data-testid="favorite-btn"
+            viewBox="0 0 32 29.6"
+            src={ heartImage }
+            onClick={ () => favorRecipe() }
+          >
+            <path
+              d={ `M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,
+              0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+              c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z` }
+            />
+          </svg>
       </div>
     );
   };
@@ -123,7 +134,7 @@ function RecipeDetailsHeader({ path, recipeId }) {
         </Card.Subtitle>
       </div>
       <div className="icons-container">
-        <div className="icon">
+        <div className="recipe-icon share-recipe">
           <Image
             src={ shareIcon }
             onClick={ toClipBoard }

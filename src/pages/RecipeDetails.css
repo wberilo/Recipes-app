@@ -27,13 +27,43 @@
   justify-content: space-evenly;
 }
 
-.icon {
+.recipe-icon {
   cursor: pointer;
   margin: 0 11px;
+  overflow: visible;
+
 }
 
-.heart {
+.recipe-heart {
   margin-right: 5px;
+  width: 25px;
+}
+
+.recipe-heart {
+  fill: white;
+  stroke: black;
+  stroke-width: 1.7px;
+}
+
+.recipe-heart:hover {
+  animation: pulse 1s ease infinite;
+}
+
+.recipe-favorite {
+  margin-right: 5px;
+  width: 25px;
+}
+
+.recipe-favorite {
+  fill: red;
+}
+
+.recipe-favorite:hover {
+  animation: small 1s ease infinite;
+}
+
+.share-recipe:hover {
+  animation: shake 1s ease infinite;
 }
 
 .modal-text {
@@ -117,4 +147,37 @@
   bottom: 0;
   position: fixed;
   width: 88%;
+}
+
+@keyframes pulse {
+
+  0% { transform: scale(1); }
+
+  50% { transform: scale(1.3); }
+
+  100% { transform: scale(1); }
+}
+
+@keyframes small {
+
+  0% { transform: scale(0.7); }
+
+  50% { transform: scale(0.4); }
+
+  100% { transform: scale(0.7); }
+}
+
+@keyframes shake {
+
+  0% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-25deg);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
 }
