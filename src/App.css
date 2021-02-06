@@ -46,6 +46,24 @@
   font-weight: 900;
 }
 
+.body {
+  height: 1400px;
+}
+
+.dark {
+  background-color: rgb(36, 33, 33);
+  color: white;
+}
+
+.dark:focus {
+  background-color: rgb(54, 51, 51);
+  color: white;
+}
+
+.dark::placeholder {
+  color: rgb(172, 167, 167);
+}
+
 @keyframes shake {
 
   0% {

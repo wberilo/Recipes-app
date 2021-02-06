@@ -10,15 +10,15 @@ function DarkMode() {
   const changeMode = () => {
     if (darkMode) return setDarkMode(false);
     setDarkMode(true);
-  }
+  };
 
   let mode = 'Noturno';
-  let buttonType = 'outline-secondary'
-  let imageClass = 'dark-mode-icon'
+  let buttonType = 'outline-secondary';
+  let imageClass = 'dark-mode-icon';
   if (darkMode) {
     mode = 'Diurno';
-    buttonType = 'dark'
-    imageClass = 'dark-mode-icon light'
+    buttonType = 'dark';
+    imageClass = 'dark-mode-icon light';
   }
 
   return (
@@ -52,7 +52,7 @@ function DarkMode() {
           >
             { `Modo ${mode}` }
           </Card.Title>
-          </Button>
+        </Button>
       </div>
       <div className="show-dark-mode" />
     </div>

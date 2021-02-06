@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
+import { RecipeContext } from '../context/RecipeContext';
+import './Loading.css';
 
 function Loading() {
+  const { darkMode } = useContext(RecipeContext);
+
+  let mode = '';
+
+  if (darkMode) mode = 'dark-loading';
+
   return (
     <Card
-      style={ {
-        display: 'flex',
-        borderColor: 'transparent',
-        borderRadious: '0',
-        paddingTop: '1rem',
-      } }
+      className={ `loading-container ${mode}` }
     >
       <Card.Title
         style={ { alignSelf: 'center' } }

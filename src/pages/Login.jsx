@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import propTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { RecipeContext } from '../context/RecipeContext';
 import './Login.css';
 
 function Login({ history }) {
+  const { darkMode } = useContext(RecipeContext);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [userEmail, setUserEmail] = useState('');
 
@@ -23,11 +25,17 @@ function Login({ history }) {
     localStorage.setItem('user', JSON.stringify({ email: userEmail }));
     history.push('/comidas');
   };
+  let dark = '';
+  let buttonType = 'outline-secondary';
+  if (darkMode) {
+    buttonType = 'dark';
+    dark = 'dark';
+  }
 
   return (
-    <div className="login-container">
+    <div className={ `login-container ${dark}` }>
       <Form.Control
-        className="login-input"
+        className={ `login-input ${dark}` }
         size="lg"
         placeholder="E-mail"
         type="email"
@@ -37,7 +45,7 @@ function Login({ history }) {
       />
       <Form.Check.Label htmlFor="email-input" />
       <Form.Control
-        className="password-input"
+        className={ `password-input ${dark}` }
         size="lg"
         placeholder="Password"
         type="password"
@@ -47,8 +55,8 @@ function Login({ history }) {
       />
       <Form.Check.Label htmlFor="password-input" />
       <Button
-        className="login-btn"
-        variant="outline-secondary"
+        className={ `login-btn ${dark}` }
+        variant={ buttonType }
         size="lg"
         type="submit"
         data-testid="login-submit-btn"

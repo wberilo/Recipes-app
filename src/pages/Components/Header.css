@@ -25,6 +25,16 @@
   justify-content: center;
 }
 
+.profile-icon {
+  fill: black;
+  width: 35px;
+}
+
+.search-icon {
+  fill: black;
+  width: 35px;
+}
+
 .header-button:hover {
   background-color: rgb(175, 175, 175);
   border-color: rgb(175, 175, 175);
@@ -70,4 +80,22 @@
 
 .search-ingredient {
   margin-right: 2rem;
+}
+
+.dark-search {
+  background-color: black;
+}
+
+.icon-dark-search {
+  fill: white;
+}
+
+.button-dark-search:hover {
+  background-color: rgb(36, 33, 33);
+  border-color:rgb(36, 33, 33);
+}
+
+.button-dark-search:focus {
+  background-color: rgb(15, 14, 14);
+  border-color:rgb(15, 14, 14);
 }
