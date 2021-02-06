@@ -45,7 +45,7 @@ function Login({ history }) {
         id="password-input"
         onChange={ checkButton }
       />
-      <Form.Check.Label htmlFor="password-input" />  
+      <Form.Check.Label htmlFor="password-input" />
       <Button
         className="login-btn"
         variant="outline-secondary"
