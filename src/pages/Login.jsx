@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import './Login.css';
 
 function Login({ history }) {
   const [buttonDisable, setButtonDisable] = useState(false);
@@ -22,33 +25,38 @@ function Login({ history }) {
   };
 
   return (
-    <div>
-      <label htmlFor="email-input">
-        Email:
-        <input
-          type="text"
-          data-testid="email-input"
-          id="email-input"
-          onChange={ checkButton }
-        />
-      </label>
-      <label htmlFor="password-input">
-        Password:
-        <input
-          type="password"
-          data-testid="password-input"
-          id="password-input"
-          onChange={ checkButton }
-        />
-      </label>
-      <button
+    <div className="login-container">
+      <Form.Control
+        className="login-input"
+        size="lg"
+        placeholder="E-mail"
+        type="email"
+        data-testid="email-input"
+        id="email-input"
+        onChange={ checkButton }
+      />
+      <Form.Check.Label htmlFor="email-input" />
+      <Form.Control
+        className="password-input"
+        size="lg"
+        placeholder="Password"
+        type="password"
+        data-testid="password-input"
+        id="password-input"
+        onChange={ checkButton }
+      />
+      <Form.Check.Label htmlFor="password-input" />  
+      <Button
+        className="login-btn"
+        variant="outline-secondary"
+        size="lg"
         type="submit"
         data-testid="login-submit-btn"
         disabled={ !buttonDisable }
         onClick={ handleButton }
       >
         Entrar
-      </button>
+      </Button>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../../context/RecipeContext';
 
