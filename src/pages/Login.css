@@ -6,17 +6,17 @@
 }
 
 .login-input {
-  border-radius: 100px 100px 100px 100px;
+  border-radius: 100px;
   margin-bottom: 3rem;
   width: 90%;
 }
 
 .password-input {
-  border-radius: 100px 100px 100px 100px;
+  border-radius: 100px;
   margin-bottom: 3rem;
   width: 90%;
 }
 
 .login-btn {
-  border-radius: 100px 100px 100px 100px;
+  border-radius: 100px;
 }
