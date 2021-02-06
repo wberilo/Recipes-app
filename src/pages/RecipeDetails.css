@@ -35,14 +35,11 @@
 }
 
 .recipe-heart {
-  margin-right: 5px;
-  width: 25px;
-}
-
-.recipe-heart {
   fill: white;
+  margin-right: 5px;
   stroke: black;
   stroke-width: 1.7px;
+  width: 25px;
 }
 
 .recipe-heart:hover {
