@@ -110,6 +110,44 @@
   border-color:rgb(63, 60, 60);
 }
 
+.cont-dark-done {
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35), 0 6px 20px 0 rgb(35, 35, 35) !important;
+}
+
+.name-dark-done {
+  color: white;
+}
+
+.name-dark-done:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+.set-dark-done {
+  fill: white;
+}
+
+.set-dark-done:hover {
+  fill: white !important;
+}
+
+.dark-heart {
+  fill: transparent;
+  stroke: white;
+}
+
+.dark-favor {
+  fill: white;
+}
+
+.dark-favor:hover {
+  background-color: transparent !important;
+}
+
+.badge-dark-done {
+  background-color: rgb(35, 35, 35);
+}
+
 @keyframes pulse {
 
   0% { transform: scale(1); }
