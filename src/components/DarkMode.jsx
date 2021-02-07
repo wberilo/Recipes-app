@@ -55,7 +55,7 @@ function DarkMode() {
           <div className="dark-mode-icon" />
         </Button>
       </div>
-      <div className="show-dark-mode" />
+      <div className="show-dark-mode fixed-top" />
     </div>
   );
 }

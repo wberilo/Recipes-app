@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import IngredientsCheckbox from './IngredientsCheckbox';
+import { RecipeContext } from '../context/RecipeContext';
 import '../pages/RecipeDetails.css';
 
 function RecipeDetailsIngredientsInProgress(props) {
   const { ingredients, rcpId, foodOrDrink, pathname } = props;
+  const { darkMode } = useContext(RecipeContext);
   return (
     <Form.Group className="in-progress">
       { ingredients.map((igrd, index) => {
@@ -25,7 +27,10 @@ function RecipeDetailsIngredientsInProgress(props) {
               return item.includes(ingredient);
             });
         }
-        if (isDone) labelClass = 'checked';
+        if (isDone) {
+          labelClass = 'checked';
+          if (darkMode) labelClass = 'dark-checked';
+        }
         return (
           <div
             data-testid={ `${index}-ingredient-step` }
