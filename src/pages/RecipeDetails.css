@@ -157,8 +157,8 @@
   background-color: rgb(35, 35, 35);
 }
 
-.set-dark-recipe {
-  fill: white ! important;
+.set-dark-recipe.set-dark-recipe {
+  fill: white;
 }
 
 .set-dark-recipe:hover {
@@ -174,9 +174,9 @@
   border-color: rgb(10, 10, 10);
 }
 
-.cont-dark-recipe {
+.cont-dark-recipe.cont-dark-recipe {
   background-color: rgb(35, 35, 35);
-  box-shadow: 0 4px 5px 0 rgb(35, 35, 35) , 0 6px 20px 0 rgb(35, 35, 35) ! important;
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35) , 0 6px 20px 0 rgb(35, 35, 35);
 }
 
 .name-dark-recipe {

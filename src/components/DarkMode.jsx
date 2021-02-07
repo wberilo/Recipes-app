@@ -31,6 +31,7 @@ function DarkMode({ location }) {
   let header = 'no-show';
 
   if (pathname.includes('explorar') || pathname.includes('perfil')
+    || pathname.includes('feitas') || pathname.includes('favoritas')
     || pathname.length === parameter) header = 'show';
 
   return (
