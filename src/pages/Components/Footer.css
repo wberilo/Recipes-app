@@ -25,3 +25,36 @@
   background-color: rgb(175, 175, 175);
   border-color: rgb(175, 175, 175);
 }
+
+.drink-icon {
+  fill: black;
+  width: 43px;
+}
+
+.explore-icon {
+  fill: black;
+  width: 43px;
+}
+
+.food-icon {
+  fill: black;
+  width: 43px;
+}
+
+.dark-footer {
+  background-color: black;
+}
+
+.icon-dark-footer {
+  fill: white;
+}
+
+.button-dark-footer:hover {
+  background-color: rgb(36, 33, 33);
+  border-color:rgb(36, 33, 33);
+}
+
+.button-dark-footer:focus {
+  background-color: rgb(15, 14, 14);
+  border-color:rgb(15, 14, 14);
+}
