@@ -192,6 +192,23 @@
   text-decoration: line-through;
 }
 
+.dark-modal {
+  background-color: rgb(30, 30, 30);
+  border-color: transparent;
+  color: white;
+}
+
+.btn-dark-modal {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+.btn-dark-modal:hover {
+  background-color: rgb(63, 60, 60);
+  border-color:rgb(63, 60, 60);
+}
+
 
 @keyframes pulse {
 
