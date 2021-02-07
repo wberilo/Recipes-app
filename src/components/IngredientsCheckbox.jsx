@@ -7,6 +7,7 @@ import '../pages/RecipeDetails.css';
 
 function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
   const {
+    darkMode,
     setDisable,
     ingredientsLength } = useContext(RecipeContext);
 
@@ -37,6 +38,7 @@ function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
       inProgressRecipes[`${type}`][`${recipeID}`].push(ingredient);
       newInput.checked = true;
       label.className = 'form-check-label checked';
+      if (darkMode) label.className= 'form-check-label dark-checked';
       if (inProgressRecipe.length === ingredientsLength) setDisable(false);
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }

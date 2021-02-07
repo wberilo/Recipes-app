@@ -149,6 +149,50 @@
   width: 88%;
 }
 
+.dark-recipe {
+  background-color: rgb(10, 10, 10);
+}
+
+.inst-dark-recipe {
+  background-color: rgb(35, 35, 35);
+}
+
+.set-dark-recipe {
+  fill: white !important;
+}
+
+.set-dark-recipe:hover {
+  fill: white;
+}
+
+.dark-heart {
+  fill: transparent;
+  stroke: white;
+}
+
+.dark-video {
+  border-color: rgb(10, 10, 10);
+}
+
+.cont-dark-recipe {
+  background-color: rgb(35, 35, 35);
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35), 0 6px 20px 0 rgb(35, 35, 35) !important;
+}
+
+.cont-dark-recipe:hover .name-dark-recipe {
+  color: rgb(200, 200, 200);
+}
+
+.name-dark-recipe {
+  color: white;
+}
+
+.dark-checked {
+  color: rgb(200, 200, 200);
+  text-decoration: line-through;
+}
+
+
 @keyframes pulse {
 
   0% { transform: scale(1); }

@@ -5,7 +5,7 @@ import { RecipeContext } from '../context/RecipeContext';
 import '../pages/RecipeDetails.css';
 
 function RecipeDetailsButton({ path, recipeId }) {
-  const { disable, setDisable, ingredientsLength, recipe } = useContext(RecipeContext);
+  const { darkMode, disable, setDisable, ingredientsLength, recipe } = useContext(RecipeContext);
 
   const finishRecipe = () => {
     let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -75,12 +75,16 @@ function RecipeDetailsButton({ path, recipeId }) {
       if (array.length !== ingredientsLength) setDisable(true);
     }
     if (!path.includes('progress')) setDisable(false);
+
+    let buttonType = 'success';
+    if (darkMode) buttonType = 'dark';
+
     return (
       <Link to={ redirect }>
         <div className="start-recipe-container">
           <Button
             className="start-recipe-btn"
-            variant="success"
+            variant={ buttonType }
             data-testid={ `${type}-recipe-btn` }
             disabled={ disable }
             onClick={ click }

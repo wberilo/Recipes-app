@@ -55,6 +55,7 @@ const sharePath5 = (
 
 function RecipeDetailsHeader({ path, recipeId }) {
   const {
+    darkMode,
     isFavorite,
     setIsFavorite,
     recipe,
@@ -76,6 +77,13 @@ function RecipeDetailsHeader({ path, recipeId }) {
     } = recipe[0];
     name = strDrink;
     category = strAlcoholic;
+  }
+
+  let mode = '';
+  let heartMode = '';
+  if (darkMode) {
+    mode = 'dark-recipe';
+    heartMode = 'dark-heart';
   }
 
   const favorRecipe = () => {
@@ -125,10 +133,10 @@ function RecipeDetailsHeader({ path, recipeId }) {
 
   const renderHeartIcon = () => {
     let heartImage = whiteHeartIcon;
-    let heartClass = 'recipe-icon recipe-heart';
+    let heartClass = `recipe-icon recipe-heart ${heartMode}`;
     if (isFavorite) {
       heartImage = blackHeartIcon;
-      heartClass = 'recipe-icon recipe-favorite';
+      heartClass = `recipe-icon recipe-favorite set-${mode} ${heartMode}`;
     }
     return (
       <div>
@@ -182,7 +190,7 @@ function RecipeDetailsHeader({ path, recipeId }) {
         <div>
           <svg
             viewBox="-21 0 512 512"
-            className="recipe-icon share-recipe"
+            className={ `recipe-icon share-recipe set-${mode}` }
             onClick={ toClipBoard }
             src={ shareIcon }
             data-testid="share-btn"

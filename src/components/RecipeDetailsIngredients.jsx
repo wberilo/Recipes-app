@@ -9,6 +9,7 @@ import '../pages/RecipeDetails.css';
 
 function RecipeDetailsIngredients({ path, recipeId }) {
   const {
+    darkMode,
     recipe,
     setIngredientsLength } = useContext(RecipeContext);
 
@@ -39,7 +40,7 @@ function RecipeDetailsIngredients({ path, recipeId }) {
       { ingredientsWithMeasures.map((igrd, index) => (
         <ListGroup.Item
           data-testid={ `${index}-ingredient-name-and-measure` }
-          className="ingredient"
+          className={ `ingredient inst-${mode}` }
           key={ igrd.name }
         >
           { igrd.measure ? `- ${renderIngredient(igrd)}` : `- ${igrd.name}` }
@@ -48,8 +49,11 @@ function RecipeDetailsIngredients({ path, recipeId }) {
     </ListGroup>
   );
 
+  let mode = '';
+  if (darkMode) mode = 'dark-recipe';
+
   return (
-    <Card className="instructions">
+    <Card className={ `instructions inst-${mode}` }>
       { !path.includes('progress') ? renderDetails() : <RecipeDetailsIngredientsInProgress
         ingredients={ ingredientsWithMeasures }
         rcpId={ recipeId }

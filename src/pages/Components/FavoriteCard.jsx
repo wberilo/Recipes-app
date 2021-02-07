@@ -86,7 +86,6 @@ function FavoriteCard(props) {
   const { darkMode, setShow } = useContext(RecipeContext);
 
   let mode = '';
-  let heartMode = '';
   if (darkMode) mode = 'dark-favor';
 
   return (

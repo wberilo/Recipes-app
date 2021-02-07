@@ -23,6 +23,7 @@ function RecipeDetails(props) {
     recommended,
     setRecipe,
     setRecommended,
+    darkMode,
   } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -90,8 +91,13 @@ function RecipeDetails(props) {
 
   checkFavorite();
 
+  let mode = '';
+  if (darkMode) {
+    mode = 'dark-recipe';
+  }
+
   return (
-    <Card>
+    <Card className={ mode }>
       <div className="image-container">
         <Card.Img
           src={ image }
@@ -116,7 +122,7 @@ function RecipeDetails(props) {
             Instruções
           </strong>
         </Card.Subtitle>
-        <Card className="instructions">
+        <Card className={ `instructions inst-${mode}` }>
           <Card.Text data-testid="instructions">
             { strInstructions }
           </Card.Text>
