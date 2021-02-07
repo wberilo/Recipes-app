@@ -83,10 +83,15 @@ const sharePath5 = (
 
 function FavoriteCard(props) {
   const { recipe, index, history, setShownRecipes } = props;
-  const { setShow } = useContext(RecipeContext);
+  const { darkMode, setShow } = useContext(RecipeContext);
+
+  let mode = '';
+  let heartMode = '';
+  if (darkMode) mode = 'dark-favor';
+
   return (
     <div
-      className="favor-recipe-container"
+      className={ `favor-recipe-container cont-${mode}` }
       key={ index }
     >
       <div
@@ -108,6 +113,7 @@ function FavoriteCard(props) {
             href={ `/${recipe.type}s/${recipe.id}` }
           >
             <Card.Title
+              className={ `name-${mode}` }
               data-testid={ `${index}-horizontal-name` }
             >
               { recipe.name }
@@ -118,7 +124,7 @@ function FavoriteCard(props) {
         <div className="icon-container">
           <svg
             viewBox="-21 0 512 512"
-            className="favor-icon share"
+            className={ `favor-icon share set-${mode}` }
             onClick={ () => {
               setShow(true);
               navigator.clipboard.writeText(
@@ -135,7 +141,7 @@ function FavoriteCard(props) {
             { sharePath5 }  
           </svg>
           <svg
-            className="favor-icon favor-heart"
+            className={ `favor-icon favor-heart set-${mode}` }
             viewBox="0 0 32 29.6"
             src={ favoriteIcon }
             data-testid={ `${index}-horizontal-favorite-btn` }

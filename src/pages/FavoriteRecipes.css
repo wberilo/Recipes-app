@@ -69,8 +69,29 @@
 }
 
 .dark-favor:hover {
-  background-color: rgb(63, 60, 60);
-  border-color:rgb(63, 60, 60);
+  background-color: rgb(63, 60, 60) !important;
+  border-color:rgb(63, 60, 60) !important;
+}
+
+.cont-dark-favor {
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35), 0 6px 20px 0 rgb(35, 35, 35) !important;
+}
+
+.name-dark-favor {
+  color: white;
+}
+
+.name-dark-favor:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+.set-dark-favor {
+  fill: white;
+}
+
+.set-dark-favor:hover {
+  fill: white;
 }
 
 @keyframes small {
