@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import { Loading } from '../components';
+import { RecipeContext } from '../context/RecipeContext';
 import './ExploreArea.css';
 
 function ExploreArea({ location }) {
@@ -13,6 +14,7 @@ function ExploreArea({ location }) {
   const [areaSelected, setAreaSelected] = useState();
 
   const { pathname } = location;
+  const { darkMode } = useContext(RecipeContext);
 
   useEffect(() => {
     async function grabFoodItems() {
@@ -57,6 +59,9 @@ function ExploreArea({ location }) {
 
   if ((foodCards.length || areas.length) < parameter) return <Loading />;
 
+  let mode = '';
+  if (darkMode) mode = 'dark-area';
+
   return (
     <div>
       <Form>
@@ -65,6 +70,7 @@ function ExploreArea({ location }) {
         >
           <Form.Control
             as="select"
+            className={ mode }
             data-testid="explore-by-area-dropdown"
             onChange={ (event) => onClick(event.target.value) }
             custom
@@ -96,7 +102,7 @@ function ExploreArea({ location }) {
           >
             <Card
               data-testid={ `${index}-recipe-card` }
-              className="recipe-card"
+              className={ `recipe-card card-${mode}` }
             >
               <div className="recipe-image-container">
                 <Card.Img
