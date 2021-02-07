@@ -27,7 +27,7 @@ function Explore({ history }) {
     getRandomRecipe();
   });
 
-  let buttonType = 'outline-secondary'
+  let buttonType = 'outline-secondary';
   let mode = '';
   if (darkMode) {
     buttonType = 'dark';

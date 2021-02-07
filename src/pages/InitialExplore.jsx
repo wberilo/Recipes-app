@@ -7,7 +7,7 @@ import './InitialExplore.css';
 function InitialExplore() {
   const { darkMode } = useContext(RecipeContext);
 
-  let buttonType = 'outline-secondary'
+  let buttonType = 'outline-secondary';
   let mode = '';
   if (darkMode) {
     buttonType = 'dark';

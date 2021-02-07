@@ -14,7 +14,7 @@ function DoneRecipes() {
   if (!doneRecipes) doneRecipes = [];
   const [shownRecipes, setShownRecipes] = useState(doneRecipes);
 
-  let buttonType = 'outline-secondary'
+  let buttonType = 'outline-secondary';
   let mode = '';
   if (darkMode) {
     buttonType = 'dark';

@@ -13,7 +13,7 @@ function Profile({ history }) {
     email = user.email;
   }
 
-  let buttonType = 'outline-secondary'
+  let buttonType = 'outline-secondary';
   let mode = '';
   if (darkMode) {
     buttonType = 'dark';

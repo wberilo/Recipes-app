@@ -13,7 +13,7 @@ function FavoriteRecipes() {
   if (!favoriteRecipes) favoriteRecipes = [];
   const [shownRecipes, setShownRecipes] = useState(favoriteRecipes);
 
-  let buttonType = 'outline-secondary'
+  let buttonType = 'outline-secondary';
   let mode = '';
   if (darkMode) {
     buttonType = 'dark';

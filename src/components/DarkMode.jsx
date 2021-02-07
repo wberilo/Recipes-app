@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import propTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { RecipeContext } from '../context/RecipeContext';
 import './DarkMode.css';
 
-function DarkMode() {
+function DarkMode({ location }) {
+  const { pathname } = location;
   const { darkMode, setDarkMode } = useContext(RecipeContext);
 
   const changeMode = () => {
@@ -15,18 +18,27 @@ function DarkMode() {
   let mode = 'Noturno';
   let buttonType = 'outline-secondary';
   let elementsClass = '';
+  let headerType = 'light';
   if (darkMode) {
     mode = 'Diurno';
     buttonType = 'dark';
     elementsClass = 'light';
+    headerType = 'dark';
   }
+
+  const parameter = 8;
+
+  let header = 'no-show';
+
+  if (pathname.includes('explorar') || pathname.includes('perfil')
+    || pathname.length === parameter) header = 'show';
 
   return (
     <div className="great-container">
-      <div className="dark-mode-container">
+      <div className={ `dark-mode-container ${headerType}-${header}` }>
         <Button
           variant={ buttonType }
-          className={ `dark-mode-button button-${elementsClass}` }
+          className={ `dark-mode-button button-${header}-${headerType}` }
           onClick={ changeMode }
         >
           <svg
@@ -60,4 +72,8 @@ function DarkMode() {
   );
 }
 
-export default DarkMode;
+export default withRouter(DarkMode);
+
+DarkMode.propTypes = {
+  location: propTypes.objectOf(),
+}.isRequired;

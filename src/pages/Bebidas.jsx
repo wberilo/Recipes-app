@@ -8,6 +8,16 @@ import { Loading } from '../components';
 import { RecipeContext } from '../context/RecipeContext';
 import './Comidas.css';
 
+const checkButton = (boolean) => {
+  if (boolean) return 'dark';
+  return 'outline-secondary';
+};
+
+const checkMode = (boolean) => {
+  if (boolean) return 'dark-food';
+  return '';
+};
+
 function Bebidas({ location }) {
   const { darkMode, searched } = useContext(RecipeContext);
   const [beverageCards, setBeverageCards] = useState([]);
@@ -78,18 +88,14 @@ function Bebidas({ location }) {
 
   if ((beverageCards.length || categories.length) < parameter) return <Loading />;
 
-  let buttonType = 'outline-secondary'
-  let mode = '';
-  if (darkMode) {
-    buttonType = 'dark';
-    mode = 'dark-food';
-  }
+  const buttonType = checkButton(darkMode);
+  const mode = checkMode(darkMode);
 
   return (
     <div>
       <div className="categories-container">
         <Button
-          className={ `category-btn ${mode}` } 
+          className={ `category-btn ${mode}` }
           variant={ buttonType }
           onClick={ () => onClick() }
           type="button"
@@ -99,7 +105,7 @@ function Bebidas({ location }) {
         </Button>
         {categories.map((card, index) => (
           <Button
-            className={ `category-btn ${mode}` } 
+            className={ `category-btn ${mode}` }
             variant={ buttonType }
             data-testid={ `${card.strCategory}-category-filter` }
             onClick={ () => onClick(card.strCategory) }

@@ -8,6 +8,16 @@ import { Loading } from '../components';
 import { RecipeContext } from '../context/RecipeContext';
 import './Comidas.css';
 
+const checkButton = (boolean) => {
+  if (boolean) return 'dark';
+  return 'outline-secondary';
+};
+
+const checkMode = (boolean) => {
+  if (boolean) return 'dark-food';
+  return '';
+};
+
 function Comidas({ location }) {
   const { darkMode, searched } = useContext(RecipeContext);
   const [foodCards, setFoodCards] = useState([]);
@@ -77,18 +87,14 @@ function Comidas({ location }) {
 
   if ((foodCards.length || categories.length) < parameter) return <Loading />;
 
-  let buttonType = 'outline-secondary'
-  let mode = '';
-  if (darkMode) {
-    buttonType = 'dark';
-    mode = 'dark-food';
-  }
+  const buttonType = checkButton(darkMode);
+  const mode = checkMode(darkMode);
 
   return (
     <div>
       <div className="categories-container">
         <Button
-          className={ `category-btn ${mode}` } 
+          className={ `category-btn ${mode}` }
           variant={ buttonType }
           onClick={ () => onClick() }
           type="button"

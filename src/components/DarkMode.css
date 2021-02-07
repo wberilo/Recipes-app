@@ -26,8 +26,15 @@
   height: 0;
 }
 
+.light-show {
+  background-color: lightgray;
+}
+
+.dark-show {
+  background-color: black;
+}
+
 .dark-mode-button {
-  border-color: rgb(180, 175, 175);
   border-radius: 100px;
   display: flex;
   fill: #6c757d;
@@ -44,6 +51,24 @@
 
 .dark-mode-button:hover {
   fill: white;
+}
+
+.button-show-light {
+  background-color: rgb(247, 238, 238);
+  border-color: rgb(247, 238, 238);
+}
+
+.button-no-show-light {
+  background-color: rgb(220, 220, 220);
+  border-color: rgb(210, 210, 210);
+}
+
+.button-show-dark:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+.button-no-show-dark:hover {
+  background-color: rgb(70, 70, 70);
 }
 
 .dark-mode-text {

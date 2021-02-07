@@ -16,6 +16,9 @@ function RecipeDetailsIngredients({ path, recipeId }) {
   let key = 'meals';
   if (path.includes('bebida')) key = 'cocktails';
 
+  let mode = '';
+  if (darkMode) mode = 'dark-recipe';
+
   const parameter = 1;
   const recipeArray = Object.entries(recipe[0]);
   const ingredients = recipeArray
@@ -48,9 +51,6 @@ function RecipeDetailsIngredients({ path, recipeId }) {
       ))}
     </ListGroup>
   );
-
-  let mode = '';
-  if (darkMode) mode = 'dark-recipe';
 
   return (
     <Card className={ `instructions inst-${mode}` }>

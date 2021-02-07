@@ -6,11 +6,13 @@ import Image from 'react-bootstrap/Image';
 import Badge from 'react-bootstrap/Badge';
 import { RecipeContext } from '../../context/RecipeContext';
 import shareIcon from '../../images/shareIcon.svg';
+import {
+  sharePath1,
+  sharePath2,
+  sharePath3,
+  sharePath4,
+  sharePath5 } from './DoneShareIcon';
 import '../DoneRecipes.css';
-
-// favor-icon favor-heart set-dark-favor
-// done-icon favorite dark-favor
-// done-icon heart dark-heart
 
 function grabTop(recipe, index) {
   if (recipe.type === 'bebida') {
@@ -71,52 +73,6 @@ const clearIngredients = (type, id) => {
   return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
 
-const sharePath1 = (
-  <path
-    d={ `m389.332031 160c-44.09375 0-80-35.882812-80-80s35.90625-80 80-80c44.097657
-    0 80 35.882812 80 80s-35.902343 80-80 80zm0-128c-26.453125 0-48 21.523438-48
-    48s21.546875 48 48 48 48-21.523438 48-48-21.546875-48-48-48zm0 0` }
-  />
-)
-
-const sharePath2 = (
-  <path
-    d={ `m389.332031 512c-44.09375 0-80-35.882812-80-80s35.90625-80 80-80c44.097657
-    0 80 35.882812 80 80s-35.902343 80-80 80zm0-128c-26.453125 0-48 21.523438-48
-    48s21.546875 48 48 48 48-21.523438 48-48-21.546875-48-48-48zm0 0` }
-  />
-)
-
-const sharePath3 = (
-  <path
-    d={ `m80 336c-44.097656 0-80-35.882812-80-80s35.902344-80 80-80 80 35.882812 80
-    80-35.902344 80-80 80zm0-128c-26.453125 0-48 21.523438-48 48s21.546875 48 48 48
-    48-21.523438 48-48-21.546875-48-48-48zm0 0` }
-  />
-)
-
-const sharePath4 = (
-  <path
-    d={ `m135.703125
-    240.425781c-5.570313
-    0-10.988281-2.902343-13.910156-8.0625-4.375-7.679687-1.707031-17.453125
-    5.972656-21.824219l197.953125-112.855468c7.65625-4.414063 17.449219-1.726563
-    21.800781 5.976562 4.375 7.679688 1.707031 17.449219-5.972656
-    21.824219l-197.953125 112.851563c-2.496094 1.40625-5.203125 2.089843-7.890625
-    2.089843zm0 0` }
-  />
-)
-
-const sharePath5 = (
-  <path
-    d={ `m333.632812 416.425781c-2.6875
-    0-5.398437-.683593-7.894531-2.109375l-197.953125-112.855468c-7.679687-4.371094-10.34375-14.144532-5.972656-21.824219
-    4.351562-7.699219 14.125-10.367188 21.804688-5.972657l197.949218
-    112.851563c7.679688 4.375 10.347656 14.144531 5.976563 21.824219-2.945313
-    5.183594-8.363281 8.085937-13.910157 8.085937zm0 0` }
-  />
-)
-
 const arrowPath = (
   <path
     d={ `M 7.402344 0.492188 C 4.171875 0.886719 1.351562 3.484375 0.507812 6.855469
@@ -144,7 +100,7 @@ const arrowPath = (
     10.117188 0.609375 9.25 0.492188 C 8.339844 0.375 8.339844 0.375 7.402344 0.492188
     Z M 7.402344 0.492188` }
   />
-)
+);
 
 function DoneCard(props) {
   const { recipe, index, history } = props;
@@ -170,7 +126,7 @@ function DoneCard(props) {
 
   return (
     <div
-      className={ `favor-recipe-container cont-${mode}`}
+      className={ `favor-recipe-container cont-${mode}` }
       key={ index }
     >
       <div
@@ -222,7 +178,7 @@ function DoneCard(props) {
             { sharePath2 }
             { sharePath3 }
             { sharePath4 }
-            { sharePath5 }  
+            { sharePath5 }
           </svg>
           <svg
             className={ `${iconClass} ${heartMode}` }
@@ -240,7 +196,7 @@ function DoneCard(props) {
             onClick={ () => clearIngredients(recipe.type, id) }
           >
             <svg
-              className={ `done-icon arrow set-${mode}`}
+              className={ `done-icon arrow set-${mode}` }
               viewBox="0 0 19 18"
             >
               { arrowPath }

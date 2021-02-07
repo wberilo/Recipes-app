@@ -5,7 +5,12 @@ import { RecipeContext } from '../context/RecipeContext';
 import '../pages/RecipeDetails.css';
 
 function RecipeDetailsButton({ path, recipeId }) {
-  const { darkMode, disable, setDisable, ingredientsLength, recipe } = useContext(RecipeContext);
+  const {
+    darkMode,
+    disable,
+    setDisable,
+    ingredientsLength,
+    recipe } = useContext(RecipeContext);
 
   const finishRecipe = () => {
     let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
