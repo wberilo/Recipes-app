@@ -23,7 +23,7 @@ async function fetchFrom(radio, history, key, setSearched) {
 }
 
 function SearchBar(props) {
-  const { setSearched } = useContext(RecipeContext);
+  const { darkMode, setSearched } = useContext(RecipeContext);
   const { location, history } = props;
   const { pathname } = location;
   const [radio, setRadio] = useState('https://www.themealdb.com/api/json/v1/1/search.php?s=');
@@ -38,17 +38,25 @@ function SearchBar(props) {
     nameSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     firstSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
   }
+
+  let mode = '';
+  let buttonType = 'outline-secondary';
+  if (darkMode) {
+    mode = 'dark-search-bar';
+    buttonType = 'dark';
+  }
+
   return (
-    <div className="search-bar">
+    <div className={ `search-bar ${mode}` }>
       <div className="search-input-btn-container">
         <input
-          className="search-input"
+          className={ `search-input input-${mode}` }
           data-testid="search-input"
           onChange={ (e) => setInput(e.target.value) }
         />
         <Button
-          className="search-button"
-          variant="outline-secondary"
+          className={ `search-button btn-${mode}` }
+          variant={ buttonType }
           onClick={ () => {
             if (radio === firstSearch && input.length !== 1) {
               alert('Sua busca deve conter somente 1 (um) caracter');
