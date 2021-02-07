@@ -54,13 +54,16 @@
 
 .done-icon {
   cursor: pointer;
+  fill: black;
   margin: 0;
   overflow: visible;
   width: 20px;
 }
 
 .share:hover {
-  animation: shake 1s ease infinite;
+  fill: blue;
+  transform: scale(1.5);
+  transition: 1s;
 }
 
 .favorite {
@@ -97,6 +100,16 @@
   margin: 0 0.1rem;
 }
 
+.dark-done {
+  background-color: black;
+  border-color: black;
+}
+
+.dark-done:hover {
+  background-color: rgb(63, 60, 60);
+  border-color:rgb(63, 60, 60);
+}
+
 @keyframes pulse {
 
   0% { transform: scale(1); }
@@ -113,21 +126,6 @@
   50% { transform: scale(0.4); }
 
   100% { transform: scale(0.7); }
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(25deg);
-  }
-
-  50% {
-    transform: rotate(-25deg);
-  }
-
-  100% {
-    transform: rotate(25deg);
-  }
 }
 
 @keyframes rotate {

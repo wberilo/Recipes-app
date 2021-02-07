@@ -43,13 +43,16 @@
 
 .favor-icon {
   cursor: pointer;
-  margin: 0 1rem;
+  fill: black;
+  margin-left: 1.5rem;
   overflow: visible;
   width: 20px;
 }
 
 .share:hover {
-  animation: shake 1s ease infinite;
+  fill: blue;
+  transform: scale(1.5);
+  transition: 1s;
 }
 
 .favor-heart {
@@ -60,6 +63,16 @@
   animation: small 1s ease infinite;
 }
 
+.dark-favor {
+  background-color: black;
+  border-color: black;
+}
+
+.dark-favor:hover {
+  background-color: rgb(63, 60, 60);
+  border-color:rgb(63, 60, 60);
+}
+
 @keyframes small {
 
   0% { transform: scale(0.7); }
@@ -67,19 +80,4 @@
   50% { transform: scale(0.4); }
 
   100% { transform: scale(0.7); }
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(25deg);
-  }
-
-  50% {
-    transform: rotate(-25deg);
-  }
-
-  100% {
-    transform: rotate(25deg);
-  }
 }

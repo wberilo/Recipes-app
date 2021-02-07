@@ -55,8 +55,15 @@
   animation: small 1s ease infinite;
 }
 
+.share-recipe {
+  fill: black;
+  width: 25px;
+}
+
 .share-recipe:hover {
-  animation: shake 1s ease infinite;
+  fill: blue;
+  transform: scale(1.5);
+  transition: 1s;
 }
 
 .modal-text {
@@ -158,19 +165,4 @@
   50% { transform: scale(0.4); }
 
   100% { transform: scale(0.7); }
-}
-
-@keyframes shake {
-
-  0% {
-    transform: rotate(25deg);
-  }
-
-  50% {
-    transform: rotate(-25deg);
-  }
-
-  100% {
-    transform: rotate(25deg);
-  }
 }

@@ -14,11 +14,11 @@ function DarkMode() {
 
   let mode = 'Noturno';
   let buttonType = 'outline-secondary';
-  let imageClass = 'dark-mode-icon';
+  let elementsClass = '';
   if (darkMode) {
     mode = 'Diurno';
     buttonType = 'dark';
-    imageClass = 'dark-mode-icon light';
+    elementsClass = 'light';
   }
 
   return (
@@ -26,11 +26,11 @@ function DarkMode() {
       <div className="dark-mode-container">
         <Button
           variant={ buttonType }
-          className="dark-mode-button"
+          className={ `dark-mode-button button-${elementsClass}` }
           onClick={ changeMode }
         >
           <svg
-            className={ `${imageClass}` }
+            className={ `dark-mode-icon ${elementsClass}` }
             viewBox="0 0 64 64"
           >
             <path
@@ -52,6 +52,7 @@ function DarkMode() {
           >
             { `Modo ${mode}` }
           </Card.Title>
+          <div className="dark-mode-icon" />
         </Button>
       </div>
       <div className="show-dark-mode" />
