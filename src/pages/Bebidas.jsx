@@ -9,7 +9,7 @@ import { RecipeContext } from '../context/RecipeContext';
 import './Comidas.css';
 
 function Bebidas({ location }) {
-  const { searched } = useContext(RecipeContext);
+  const { darkMode, searched } = useContext(RecipeContext);
   const [beverageCards, setBeverageCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
@@ -78,12 +78,19 @@ function Bebidas({ location }) {
 
   if ((beverageCards.length || categories.length) < parameter) return <Loading />;
 
+  let buttonType = 'outline-secondary'
+  let mode = '';
+  if (darkMode) {
+    buttonType = 'dark';
+    mode = 'dark-food';
+  }
+
   return (
     <div>
       <div className="categories-container">
         <Button
-          className="category-btn"
-          variant="outline-secondary"
+          className={ `category-btn ${mode}` } 
+          variant={ buttonType }
           onClick={ () => onClick() }
           type="button"
           data-testid="All-category-filter"
@@ -92,8 +99,8 @@ function Bebidas({ location }) {
         </Button>
         {categories.map((card, index) => (
           <Button
-            className="category-btn"
-            variant="outline-secondary"
+            className={ `category-btn ${mode}` } 
+            variant={ buttonType }
             data-testid={ `${card.strCategory}-category-filter` }
             onClick={ () => onClick(card.strCategory) }
             key={ index }
@@ -113,7 +120,7 @@ function Bebidas({ location }) {
           >
             <Card
               data-testid={ `${index}-recipe-card` }
-              className="recipe-card"
+              className={ `recipe-card card-${mode}` }
             >
               <div className="recipe-image-container">
                 <Card.Img

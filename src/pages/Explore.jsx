@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { RecipeContext } from '../context/RecipeContext';
 import './InitialExplore.css';
 
 function Explore({ history }) {
   const { location } = history;
   const { pathname } = location;
+  const { darkMode } = useContext(RecipeContext);
 
   const [randomRecipe, setRandomRecipe] = useState('');
 
@@ -25,12 +27,19 @@ function Explore({ history }) {
     getRandomRecipe();
   });
 
+  let buttonType = 'outline-secondary'
+  let mode = '';
+  if (darkMode) {
+    buttonType = 'dark';
+    mode = 'dark-explore';
+  }
+
   const renderOrigin = () => (
     <Link to="/explorar/comidas/area">
       <Button
-        className="explore-btn area"
+        className={ `explore-btn ${mode}` }
         data-testid="explore-by-area"
-        variant="outline-secondary"
+        variant={ buttonType }
         size="lg"
       >
         Por Local de Origem
@@ -38,15 +47,13 @@ function Explore({ history }) {
     </Link>
   );
 
-  // incluir header
-  // implementar link do botão Me Surpreenda!
   return (
     <div className="container">
       <Link to={ `${pathname}/ingredientes` }>
         <Button
-          className="explore-btn"
+          className={ `explore-btn ${mode}` }
           data-testid="explore-by-ingredient"
-          variant="outline-secondary"
+          variant={ buttonType }
           size="lg"
         >
           Por Ingredientes
@@ -55,9 +62,9 @@ function Explore({ history }) {
       { pathname.includes('comidas') && renderOrigin() }
       <Link to={ randomRecipe }>
         <Button
-          className="explore-btn"
+          className={ `explore-btn ${mode}` }
           data-testid="explore-surprise"
-          variant="outline-secondary"
+          variant={ buttonType }
           size="lg"
         >
           Me Surpreenda!
