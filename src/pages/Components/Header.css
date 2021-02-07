@@ -92,12 +92,12 @@
 
 .button-dark-search:hover {
   background-color: rgb(63, 60, 60);
-  border-color:rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
 }
 
 .button-dark-search:focus {
   background-color: rgb(15, 14, 14);
-  border-color:rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
 }
 
 .dark-search-bar {
@@ -122,11 +122,11 @@
 
 .btn-dark-search-bar:hover {
   background-color: rgb(20, 20, 20);
-  border-color:rgb(20, 20, 20);
-  box-shadow: 0 0px 5px 0 rgb(100, 100, 100), 0 0px 10px 0 rgb(100, 100, 100);
+  border-color: rgb(20, 20, 20);
+  box-shadow: 0 0 5px 0 rgb(100, 100, 100) , 0 0 10px 0 rgb(100, 100, 100);
 }
 
 .btn-dark-search-bar:focus {
   background-color: rgb(15, 14, 14);
-  border-color:rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
 }

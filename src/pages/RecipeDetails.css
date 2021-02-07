@@ -158,7 +158,7 @@
 }
 
 .set-dark-recipe {
-  fill: white !important;
+  fill: white ! important;
 }
 
 .set-dark-recipe:hover {
@@ -176,15 +176,15 @@
 
 .cont-dark-recipe {
   background-color: rgb(35, 35, 35);
-  box-shadow: 0 4px 5px 0 rgb(35, 35, 35), 0 6px 20px 0 rgb(35, 35, 35) !important;
-}
-
-.cont-dark-recipe:hover .name-dark-recipe {
-  color: rgb(200, 200, 200);
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35) , 0 6px 20px 0 rgb(35, 35, 35) ! important;
 }
 
 .name-dark-recipe {
   color: white;
+}
+
+.cont-dark-recipe:hover .name-dark-recipe {
+  color: rgb(200, 200, 200);
 }
 
 .dark-checked {
@@ -206,7 +206,7 @@
 
 .btn-dark-modal:hover {
   background-color: rgb(63, 60, 60);
-  border-color:rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
 }
 
 

@@ -51,10 +51,10 @@
 
 .button-dark-footer:hover {
   background-color: rgb(36, 33, 33);
-  border-color:rgb(36, 33, 33);
+  border-color: rgb(36, 33, 33);
 }
 
 .button-dark-footer:focus {
   background-color: rgb(15, 14, 14);
-  border-color:rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
 }

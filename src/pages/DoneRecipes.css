@@ -107,11 +107,11 @@
 
 .dark-done:hover {
   background-color: rgb(63, 60, 60);
-  border-color:rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
 }
 
 .cont-dark-done {
-  box-shadow: 0 4px 5px 0 rgb(35, 35, 35), 0 6px 20px 0 rgb(35, 35, 35) !important;
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35) , 0 6px 20px 0 rgb(35, 35, 35) ! important;
 }
 
 .name-dark-done {
@@ -128,7 +128,7 @@
 }
 
 .set-dark-done:hover {
-  fill: white !important;
+  fill: white ! important;
 }
 
 .dark-heart {
