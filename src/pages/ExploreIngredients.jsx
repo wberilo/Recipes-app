@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import { Loading } from '../components';
+import { RecipeContext } from '../context/RecipeContext';
 import './Comidas.css';
 
 function ExploreIngredients({ history }) {
@@ -12,6 +13,7 @@ function ExploreIngredients({ history }) {
   const parameter = 1;
 
   const [ingredients, setIngredients] = useState([]);
+  const { darkMode } = useContext(RecipeContext);
 
   useEffect(() => {
     async function getIngredients() {
@@ -30,6 +32,9 @@ function ExploreIngredients({ history }) {
   }, [pathname]);
 
   if (ingredients.length < parameter) return <Loading />;
+
+  let mode = '';
+  if (darkMode) mode = 'dark-food';
 
   return (
     <CardDeck
@@ -54,7 +59,7 @@ function ExploreIngredients({ history }) {
           >
             <Card
               data-testid={ `${index}-ingredient-card` }
-              className="recipe-card"
+              className={ `recipe-card card-${mode}` }
             >
               <div
                 className="recipe-image-container"

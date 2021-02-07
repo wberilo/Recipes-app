@@ -20,12 +20,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const { darkMode } = useContext(RecipeContext);
+  const mainBody = document.getElementsByTagName('body')[0];
+
   let mode = 'light';
   if (darkMode) mode = 'dark';
 
+  mainBody.className = mode;
+
   return (
     <BrowserRouter>
-      <div className={ `body ${mode}` }>
+      <div className={ mode }>
         <DarkMode />
         <Header />
         <Switch>

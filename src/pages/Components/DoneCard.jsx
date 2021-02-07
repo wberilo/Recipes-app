@@ -8,6 +8,10 @@ import { RecipeContext } from '../../context/RecipeContext';
 import shareIcon from '../../images/shareIcon.svg';
 import '../DoneRecipes.css';
 
+// favor-icon favor-heart set-dark-favor
+// done-icon favorite dark-favor
+// done-icon heart dark-heart
+
 function grabTop(recipe, index) {
   if (recipe.type === 'bebida') {
     return (
@@ -37,7 +41,7 @@ const checkFavorite = (event, id, darkMode) => {
   if (icon.className.baseVal.length === firstParameter) icon = target.parentElement;
   if (icon.className.baseVal.includes('heart')) {
     icon.className.baseVal = 'done-icon favorite';
-    if (darkMode) icon.className.baseVal = 'done-icon favorite dark-favor';
+    if (darkMode) icon.className.baseVal = 'done-icon favorite set-dark-favor';
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     const recipe = doneRecipes.find((item) => item.id === id);
     const { type, area, category, alcoholicOrNot, name, image } = recipe;
@@ -160,7 +164,7 @@ function DoneCard(props) {
     const isFavorite = favoriteRecipes.some((item) => item.id === id);
     if (isFavorite) {
       iconClass = 'done-icon favorite';
-      if (darkMode) heartMode = 'dark-favor';
+      if (darkMode) heartMode = 'set-dark-favor';
     }
   }
 

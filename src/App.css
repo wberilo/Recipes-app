@@ -46,10 +46,6 @@
   font-weight: 900;
 }
 
-.body {
-  height: 1400px;
-}
-
 .dark {
   background-color: rgb(10, 10, 10);
   color: white;

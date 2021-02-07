@@ -140,10 +140,6 @@
   fill: white;
 }
 
-.dark-favor:hover {
-  background-color: transparent !important;
-}
-
 .badge-dark-done {
   background-color: rgb(35, 35, 35);
 }
