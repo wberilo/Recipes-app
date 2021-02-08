@@ -8,10 +8,14 @@ import '../pages/RecipeDetails.css';
 
 function RecommendedRecipes({ path }) {
   const {
+    darkMode,
     setRecipe,
     recommended,
     setRecommended,
   } = useContext(RecipeContext);
+
+  let mode = '';
+  if (darkMode) mode = 'dark-recipe';
 
   const renderRecommended = (item, index, carousel) => {
     let recipeName = item.strMeal;
@@ -38,7 +42,7 @@ function RecommendedRecipes({ path }) {
         } }
       >
         <Card
-          className="recommendation-card"
+          className={ `recommendation-card cont-${mode}` }
           data-testid={ `${number}-recomendation-card` }
         >
           <div
@@ -58,7 +62,7 @@ function RecommendedRecipes({ path }) {
               { recipeCategory }
             </Card.Subtitle>
             <Card.Title
-              className="recommendation-title"
+              className={ `recommendation-title name-${mode}` }
               data-testid={ `${number}-recomendation-title` }
             >
               { recipeName }

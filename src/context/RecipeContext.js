@@ -12,6 +12,7 @@ const RecipeProvider = ({ children }) => {
   const [disable, setDisable] = useState(false);
   const [ingredientsLength, setIngredientsLength] = useState(initialIngredientsLength);
   const [searched, setSearched] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
   const foodsFetched = [];
 
@@ -31,6 +32,8 @@ const RecipeProvider = ({ children }) => {
     setDisable,
     ingredientsLength,
     setIngredientsLength,
+    darkMode,
+    setDarkMode,
   };
 
   return (

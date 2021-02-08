@@ -8,6 +8,7 @@ import Bebidas from './Bebidas';
 import Profile from './Profile';
 import ExploreArea from './ExploreArea';
 import Header from './Components/Header';
+import MenuInferior from './Components/MenuInferior';
 import DoneRecipes from './DoneRecipes';
 import FavoriteRecipes from './FavoriteRecipes';
 
@@ -15,6 +16,7 @@ export {
   FavoriteRecipes,
   DoneRecipes,
   Header,
+  MenuInferior,
   Profile,
   Comidas,
   Bebidas,

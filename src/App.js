@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from './context/RecipeContext';
+import { RecipeContext } from './context/RecipeContext';
 import { Comidas,
   FavoriteRecipes,
   DoneRecipes,
   Header,
+  MenuInferior,
   Bebidas,
   InitialExplore,
   Explore,
@@ -13,13 +14,23 @@ import { Comidas,
   RecipeDetails,
   Profile } from './pages';
 import Login from './pages/Login';
+import { DarkMode } from './components';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const { darkMode } = useContext(RecipeContext);
+  const mainBody = document.getElementsByTagName('body')[0];
+
+  let mode = 'light';
+  if (darkMode) mode = 'dark';
+
+  mainBody.className = mode;
+
   return (
-    <Provider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className={ mode }>
+        <DarkMode />
         <Header />
         <Switch>
           <Route exact path="/" component={ Login } />
@@ -72,8 +83,9 @@ function App() {
             component={ ExploreArea }
           />
         </Switch>
-      </BrowserRouter>
-    </Provider>
+        <MenuInferior />
+      </div>
+    </BrowserRouter>
   );
 }
 

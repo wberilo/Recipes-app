@@ -6,9 +6,17 @@ import '../pages/RecipeDetails.css';
 
 function RecipeDetailsModal() {
   const {
+    darkMode,
     show,
     setShow,
   } = useContext(RecipeContext);
+
+  let buttonType = 'primary';
+  let mode = '';
+  if (darkMode) {
+    buttonType = 'dark';
+    mode = 'dark-modal';
+  }
 
   return (
     <Modal
@@ -17,12 +25,18 @@ function RecipeDetailsModal() {
       size="sm"
       centered
     >
-      <Modal.Header closeButton />
-      <Modal.Body>
+      <Modal.Header className={ mode } closeButton />
+      <Modal.Body className={ mode }>
         <p className="modal-text">Link copiado!</p>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={ () => setShow(false) }>Fechar janela</Button>
+      <Modal.Footer className={ mode }>
+        <Button
+          className={ `btn-${mode}` }
+          variant={ buttonType }
+          onClick={ () => setShow(false) }
+        >
+          Fechar janela
+        </Button>
       </Modal.Footer>
     </Modal>
   );

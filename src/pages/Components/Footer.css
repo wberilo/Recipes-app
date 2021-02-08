@@ -1,0 +1,60 @@
+.footer-container {
+  background-color: lightgray;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+}
+
+.footer-button {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 30%;
+  margin: 0.2rem;
+  padding: 0.4rem;
+}
+
+.footer-button:hover {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}
+
+.footer-button:focus {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}
+
+.drink-icon {
+  fill: black;
+  width: 43px;
+}
+
+.explore-icon {
+  fill: black;
+  width: 43px;
+}
+
+.food-icon {
+  fill: black;
+  width: 43px;
+}
+
+.dark-footer {
+  background-color: black;
+}
+
+.icon-dark-footer {
+  fill: white;
+}
+
+.button-dark-footer:hover {
+  background-color: rgb(36, 33, 33);
+  border-color: rgb(36, 33, 33);
+}
+
+.button-dark-footer:focus {
+  background-color: rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
+}

@@ -1,0 +1,22 @@
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 5rem;
+}
+
+.login-input {
+  border-radius: 100px;
+  margin-bottom: 3rem;
+  width: 90%;
+}
+
+.password-input {
+  border-radius: 100px;
+  margin-bottom: 3rem;
+  width: 90%;
+}
+
+.login-btn {
+  border-radius: 100px;
+}

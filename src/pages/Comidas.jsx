@@ -1,16 +1,29 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import { Loading } from '../components';
 import { RecipeContext } from '../context/RecipeContext';
-import MenuInferior from './Components/MenuInferior';
+import './Comidas.css';
 
-function Comidas(props) {
-  const { searched } = useContext(RecipeContext);
+const checkButton = (boolean) => {
+  if (boolean) return 'dark';
+  return 'outline-secondary';
+};
+
+const checkMode = (boolean) => {
+  if (boolean) return 'dark-food';
+  return '';
+};
+
+function Comidas({ location }) {
+  const { darkMode, searched } = useContext(RecipeContext);
   const [foodCards, setFoodCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [catSelected, setCatSelected] = useState();
 
-  const { history, location } = props;
   const { ingredient } = location;
   useEffect(() => {
     if (searched !== undefined) {
@@ -70,47 +83,71 @@ function Comidas(props) {
     }
   }
 
+  const parameter = 1;
+
+  if ((foodCards.length || categories.length) < parameter) return <Loading />;
+
+  const buttonType = checkButton(darkMode);
+  const mode = checkMode(darkMode);
+
   return (
     <div>
-      <div>
-        <button
+      <div className="categories-container">
+        <Button
+          className={ `category-btn ${mode}` }
+          variant={ buttonType }
           onClick={ () => onClick() }
           type="button"
           data-testid="All-category-filter"
         >
           Todas Categorias
-        </button>
+        </Button>
         {categories.map((card, index) => (
-          <button
+          <Button
+            className={ `category-btn ${mode}` }
+            variant={ buttonType }
             data-testid={ `${card.strCategory}-category-filter` }
             onClick={ () => onClick(card.strCategory) }
             key={ index }
             type="button"
           >
             {card.strCategory}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="gallery">
+      <CardDeck
+        className="cards-container"
+      >
         {foodCards.map((card, index) => (
-          <div
-            tabIndex="0"
-            role="button"
-            onClick={ () => history.push(`/comidas/${card.idMeal}`) }
-            onKeyDown={ () => console.log('a') }
+          <Link
             key={ index }
-            data-testid={ `${index}-recipe-card` }
+            to={ `/comidas/${card.idMeal}` }
           >
-            <p data-testid={ `${index}-card-name` }>{card.strMeal}</p>
-            <img
-              className="thumb"
-              src={ card.strMealThumb }
-              alt={ index }
-              data-testid={ `${index}-card-img` }
-            />
-          </div>))}
-      </div>
-      <MenuInferior />
+            <Card
+              data-testid={ `${index}-recipe-card` }
+              className={ `recipe-card card-${mode}` }
+            >
+              <div className="recipe-image-container">
+                <Card.Img
+                  data-testid={ `${index}-card-img` }
+                  variant="top"
+                  src={ card.strMealThumb }
+                />
+              </div>
+              <Card.Body
+                className="recipe-body"
+              >
+                <Card.Title
+                  className="recipe-title"
+                  data-testid={ `${index}-card-name` }
+                >
+                  { card.strMeal }
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        ))}
+      </CardDeck>
     </div>
   );
 }

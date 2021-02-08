@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import MenuInferior from './Components/MenuInferior';
+import { RecipeContext } from '../context/RecipeContext';
+import './InitialExplore.css';
 
 function InitialExplore() {
-  // incluir header
+  const { darkMode } = useContext(RecipeContext);
+
+  let buttonType = 'outline-secondary';
+  let mode = '';
+  if (darkMode) {
+    buttonType = 'dark';
+    mode = 'dark-explore';
+  }
+
   return (
-    <div>
+    <div className="container">
       <Link to="/explorar/comidas">
         <Button
+          className={ `explore-btn ${mode}` }
           data-testid="explore-food"
-          variant="outline-secondary"
+          variant={ buttonType }
           size="lg"
         >
           Explorar Comidas
@@ -18,13 +28,13 @@ function InitialExplore() {
       </Link>
       <Link to="/explorar/bebidas">
         <Button
+          className={ `explore-btn ${mode}` }
           data-testid="explore-drinks"
-          variant="outline-secondary"
+          variant={ buttonType }
           size="lg"
         >
           Explorar Bebidas
         </Button>
-        <MenuInferior />
       </Link>
     </div>
   );

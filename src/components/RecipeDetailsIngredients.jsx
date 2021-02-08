@@ -2,19 +2,22 @@ import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../context/RecipeContext';
-import IngredientsCheckbox from './IngredientsCheckbox';
+import RecipeDetailsIngredientsInProgress from './RecipeDetailsIngredientsInProgress';
 import renderIngredient from '../services';
 import '../pages/RecipeDetails.css';
 
 function RecipeDetailsIngredients({ path, recipeId }) {
   const {
+    darkMode,
     recipe,
     setIngredientsLength } = useContext(RecipeContext);
 
   let key = 'meals';
   if (path.includes('bebida')) key = 'cocktails';
+
+  let mode = '';
+  if (darkMode) mode = 'dark-recipe';
 
   const parameter = 1;
   const recipeArray = Object.entries(recipe[0]);
@@ -40,7 +43,7 @@ function RecipeDetailsIngredients({ path, recipeId }) {
       { ingredientsWithMeasures.map((igrd, index) => (
         <ListGroup.Item
           data-testid={ `${index}-ingredient-name-and-measure` }
-          className="ingredient"
+          className={ `ingredient inst-${mode}` }
           key={ igrd.name }
         >
           { igrd.measure ? `- ${renderIngredient(igrd)}` : `- ${igrd.name}` }
@@ -49,46 +52,14 @@ function RecipeDetailsIngredients({ path, recipeId }) {
     </ListGroup>
   );
 
-  const renderInProgress = () => (
-    <Form.Group>
-      { ingredientsWithMeasures.map((igrd, index) => {
-        const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        let inProgressRecipe = null;
-        if (inProgressRecipes) {
-          inProgressRecipe = inProgressRecipes[`${key}`][`${recipeId}`];
-        }
-        let isDone = false;
-        let labelClass = '';
-        if (inProgressRecipe) {
-          isDone = inProgressRecipe
-            .some((item) => {
-              const string = `${igrd.name} | ${igrd.measure}`;
-              const ingredient = string.trim();
-              return item.includes(ingredient);
-            });
-        }
-        if (isDone) labelClass = 'checked';
-        return (
-          <div
-            data-testid={ `${index}-ingredient-step` }
-            key={ igrd.name }
-          >
-            <IngredientsCheckbox
-              recipeID={ recipeId }
-              type={ key }
-              verify={ isDone }
-              lbClass={ labelClass }
-              igd={ igrd }
-            />
-          </div>
-        );
-      })}
-    </Form.Group>
-  );
-
   return (
-    <Card className="instructions">
-      { !path.includes('progress') ? renderDetails() : renderInProgress() }
+    <Card className={ `instructions inst-${mode}` }>
+      { !path.includes('progress') ? renderDetails() : <RecipeDetailsIngredientsInProgress
+        ingredients={ ingredientsWithMeasures }
+        rcpId={ recipeId }
+        foodOrDrink={ key }
+        pathname={ path }
+      /> }
     </Card>
   );
 }

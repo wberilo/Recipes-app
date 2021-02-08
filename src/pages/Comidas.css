@@ -1,0 +1,68 @@
+.categories-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.category-btn {
+  margin: 0.13rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.recipe-card {
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 10rem;
+  margin: 1rem;
+  width: 8.87rem;
+}
+
+.recipe-image-container {
+  align-items: center;
+  border-radius: 10% 10% 0 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.recipe-body {
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.recipe-title {
+  font-size: 1.2rem;
+  padding-bottom: 0.25rem;
+}
+
+.dark-food {
+  background-color: black;
+  border-color: black;
+}
+
+.dark-food:hover {
+  background-color: rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
+}
+
+.card-dark-food.card-dark-food {
+  background-color: black;
+  border-color: black;
+  box-shadow: 0 4px 5px 0 rgb(25, 25, 25) , 0 6px 20px 0 rgb(25, 25, 25);
+  color: white;
+}
+
+.card-dark-food:hover {
+  background-color: rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
+  text-decoration: underline;
+  text-decoration-color: white;
+}

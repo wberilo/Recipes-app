@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../../context/RecipeContext';
 
 async function fetchFrom(radio, history, key, setSearched) {
@@ -22,7 +23,7 @@ async function fetchFrom(radio, history, key, setSearched) {
 }
 
 function SearchBar(props) {
-  const { setSearched } = useContext(RecipeContext);
+  const { darkMode, setSearched } = useContext(RecipeContext);
   const { location, history } = props;
   const { pathname } = location;
   const [radio, setRadio] = useState('https://www.themealdb.com/api/json/v1/1/search.php?s=');
@@ -37,42 +38,83 @@ function SearchBar(props) {
     nameSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
     firstSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
   }
+
+  let mode = '';
+  let buttonType = 'outline-secondary';
+  if (darkMode) {
+    mode = 'dark-search-bar';
+    buttonType = 'dark';
+  }
+
   return (
-    <div>
-      <input
-        data-testid="search-input"
-        onChange={ (e) => setInput(e.target.value) }
-      />
-      <input
-        onClick={ () => setRadio(ingredientSearch) }
-        data-testid="ingredient-search-radio"
-        name="searchType"
-        type="radio"
-      />
-      <input
-        onClick={ () => setRadio(nameSearch) }
-        data-testid="name-search-radio"
-        name="searchType"
-        type="radio"
-      />
-      <input
-        onClick={ () => setRadio(firstSearch) }
-        data-testid="first-letter-search-radio"
-        name="searchType"
-        type="radio"
-      />
-      <Button
-        onClick={ () => {
-          if (radio === firstSearch && input.length !== 1) {
-            alert('Sua busca deve conter somente 1 (um) caracter');
-          } else {
-            fetchFrom(`${radio}${input}`, history, key, setSearched);
-          }
-        } }
-        data-testid="exec-search-btn"
-      >
-        Search
-      </Button>
+    <div className={ `search-bar ${mode}` }>
+      <div className="search-input-btn-container">
+        <input
+          className={ `search-input input-${mode}` }
+          data-testid="search-input"
+          onChange={ (e) => setInput(e.target.value) }
+        />
+        <Button
+          className={ `search-button btn-${mode}` }
+          variant={ buttonType }
+          onClick={ () => {
+            if (radio === firstSearch && input.length !== 1) {
+              alert('Sua busca deve conter somente 1 (um) caracter');
+            } else {
+              fetchFrom(`${radio}${input}`, history, key, setSearched);
+            }
+          } }
+          data-testid="exec-search-btn"
+        >
+          Buscar
+        </Button>
+      </div>
+      <Form>
+        <div className="search-radio-container">
+          <Form.Check
+            className="search-ingredient"
+            id="ingredient-search"
+            onClick={ () => setRadio(ingredientSearch) }
+            data-testid="ingredient-search-radio"
+            inline
+            label="Ingrediente"
+            type="radio"
+            name="searchType"
+          />
+          <Form.Check.Label
+            htmlFor="ingredient-search"
+            onClick={ () => setRadio(ingredientSearch) }
+          />
+          <Form.Check
+            className="search-name"
+            id="name-search"
+            onClick={ () => setRadio(nameSearch) }
+            data-testid="name-search-radio"
+            inline
+            label="Nome"
+            type="radio"
+            name="searchType"
+          />
+          <Form.Check.Label
+            htmlFor="name-search"
+            onClick={ () => setRadio(nameSearch) }
+          />
+          <Form.Check
+            className="search-first-letter"
+            id="first-letter-search"
+            onClick={ () => setRadio(firstSearch) }
+            data-testid="first-letter-search-radio"
+            inline
+            label="Primeira letra"
+            type="radio"
+            name="searchType"
+          />
+          <Form.Check.Label
+            onClick={ () => setRadio(firstSearch) }
+            htmlFor="first-letter-search"
+          />
+        </div>
+      </Form>
     </div>);
 }
 

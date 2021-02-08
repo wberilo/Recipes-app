@@ -5,29 +5,48 @@ import { RecipeContext } from '../context/RecipeContext';
 import renderIngredient from '../services';
 import '../pages/RecipeDetails.css';
 
+const checkInProgressRecipes = (key, id) => {
+  let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (!inProgressRecipes) {
+    inProgressRecipes = { cocktails: {}, meals: {} };
+    inProgressRecipes[`${key}`][`${id}`] = [];
+  }
+  return inProgressRecipes;
+};
+
+const checkLabel = (element) => {
+  let label = element;
+  if (!element.className.includes('label')) label = element.nextSibling;
+  return label;
+};
+
+const checkInput = (element) => {
+  let input = element.previousSibling;
+  if (!element.className.includes('label')) input = element;
+  return input;
+};
+
+const createNewInput = () => {
+  const newInput = document.createElement('input');
+  newInput.className = 'form-check-input checkbox';
+  newInput.type = 'checkbox';
+  return newInput;
+};
+
 function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
   const {
+    darkMode,
     setDisable,
     ingredientsLength } = useContext(RecipeContext);
 
   const check = ({ target }) => {
-    let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (!inProgressRecipes) {
-      inProgressRecipes = { cocktails: {}, meals: {} };
-      inProgressRecipes[`${type}`][`${recipeID}`] = [];
-    }
+    const inProgressRecipes = checkInProgressRecipes(type, recipeID);
     let inProgressRecipe = inProgressRecipes[`${type}`][`${recipeID}`];
     const parent = target.parentElement;
-    let label = target;
-    let input = target.previousSibling;
-    if (!label.className.includes('label')) {
-      input = target;
-      label = target.nextSibling;
-    }
+    const label = checkLabel(target);
+    const input = checkInput(target);
     input.remove();
-    const newInput = document.createElement('input');
-    newInput.className = 'form-check-input';
-    newInput.type = 'checkbox';
+    const newInput = createNewInput();
     newInput.addEventListener('click', (event) => check(event));
     parent.insertBefore(newInput, label);
     const ingredient = label.innerText;
@@ -37,6 +56,7 @@ function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
       inProgressRecipes[`${type}`][`${recipeID}`].push(ingredient);
       newInput.checked = true;
       label.className = 'form-check-label checked';
+      if (darkMode) label.className = 'form-check-label dark-checked';
       if (inProgressRecipe.length === ingredientsLength) setDisable(false);
       return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     }
@@ -55,10 +75,11 @@ function IngredientsCheckbox({ recipeID, type, verify, lbClass, igd }) {
 
   return (
     <Form.Check
-      className="ingredient"
+      className="ingredient-container"
       type="checkbox"
     >
       <Form.Check.Input
+        className="checkbox"
         type="checkbox"
         checked={ verify }
         onClick={ (event) => check(event) }

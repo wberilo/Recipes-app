@@ -1,0 +1,132 @@
+.header-container {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.header-title {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.header-button {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 30%;
+  margin: 0.2rem;
+}
+
+.profile-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-icon {
+  fill: black;
+  width: 35px;
+}
+
+.search-icon {
+  fill: black;
+  width: 35px;
+}
+
+.header-button:hover {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}
+
+.header-button:focus {
+  background-color: rgb(175, 175, 175);
+  border-color: rgb(175, 175, 175);
+}
+
+.invisible-button {
+  width: 55px;
+}
+
+.search-bar {
+  border-color: transparent;
+  border-radius: 3%;
+  box-shadow: 0 0.41px 3px 3px rgb(69, 148, 252);
+  width: 100%;
+}
+
+.search-input {
+  font-size: 1.09rem;
+  margin: 0.2rem;
+  width: 74%;
+}
+
+.search-button {
+  margin-bottom: 5px;
+  margin-left: 1px;
+  margin-top: 0;
+  padding: 0.25rem;
+}
+
+.search-radio-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 0.2rem;
+  margin-top: 0;
+}
+
+.search-ingredient {
+  margin-right: 2rem;
+}
+
+.dark-search {
+  background-color: black;
+}
+
+.icon-dark-search {
+  fill: white;
+}
+
+.button-dark-search:hover {
+  background-color: rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
+}
+
+.button-dark-search:focus {
+  background-color: rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
+}
+
+.dark-search-bar {
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+
+.input-dark-search-bar {
+  background-color: rgb(30, 30, 30);
+  border-radius: 5px;
+  color: white;
+}
+
+.input-dark-search-bar:focus {
+  background-color: rgb(20, 20, 20);
+}
+
+.btn-dark-search-bar {
+  background-color: black;
+  border-color: black;
+}
+
+.btn-dark-search-bar:hover {
+  background-color: rgb(20, 20, 20);
+  border-color: rgb(20, 20, 20);
+  box-shadow: 0 0 5px 0 rgb(100, 100, 100) , 0 0 10px 0 rgb(100, 100, 100);
+}
+
+.btn-dark-search-bar:focus {
+  background-color: rgb(15, 14, 14);
+  border-color: rgb(15, 14, 14);
+}

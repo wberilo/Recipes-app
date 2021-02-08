@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import { Loading } from '../components';
+import { RecipeContext } from '../context/RecipeContext';
+import './ExploreArea.css';
 
-function ExploreArea(props) {
+function ExploreArea({ location }) {
   const [foodCards, setFoodCards] = useState([]);
   const [areas, setAreas] = useState([]);
   const [areaSelected, setAreaSelected] = useState();
 
-  const { history, location } = props;
   const { pathname } = location;
+  const { darkMode } = useContext(RecipeContext);
 
   useEffect(() => {
     async function grabFoodItems() {
@@ -47,52 +53,78 @@ function ExploreArea(props) {
     }
   }
 
-  console.log(areas);
-
   if (pathname.includes('bebida')) return <h1>Not Found</h1>;
+
+  const parameter = 1;
+
+  if ((foodCards.length || areas.length) < parameter) return <Loading />;
+
+  let mode = '';
+  if (darkMode) mode = 'dark-area';
 
   return (
     <div>
-      <div>
-        <select
-          data-testid="explore-by-area-dropdown"
-          onChange={ (event) => onClick(event.target.value) }
+      <Form>
+        <Form.Group
+          className="categories-container"
         >
-          <option
-            value=""
-            data-testid="All-option"
+          <Form.Control
+            as="select"
+            className={ mode }
+            data-testid="explore-by-area-dropdown"
+            onChange={ (event) => onClick(event.target.value) }
+            custom
           >
-            All
-          </option>
-          { areas.map((area, index) => (
             <option
-              key={ index }
-              value={ area.strArea }
-              data-testid={ `${area.strArea}-option` }
+              value=""
+              data-testid="All-option"
             >
-              {area.strArea}
-            </option>))}
-        </select>
-      </div>
-      <div className="gallery">
+              All
+            </option>
+            { areas.map((area, index) => (
+              <option
+                key={ index }
+                value={ area.strArea }
+                data-testid={ `${area.strArea}-option` }
+              >
+                {area.strArea}
+              </option>))}
+          </Form.Control>
+        </Form.Group>
+      </Form>
+      <CardDeck
+        className="cards-container"
+      >
         {foodCards.map((card, index) => (
-          <div
-            tabIndex="0"
-            role="button"
-            onClick={ () => history.push(`/comidas/${card.idMeal}`) }
-            onKeyDown={ () => console.log('a') }
+          <Link
             key={ index }
-            data-testid={ `${index}-recipe-card` }
+            to={ `/comidas/${card.idMeal}` }
           >
-            <p data-testid={ `${index}-card-name` }>{card.strMeal}</p>
-            <img
-              className="thumb"
-              src={ card.strMealThumb }
-              alt={ index }
-              data-testid={ `${index}-card-img` }
-            />
-          </div>))}
-      </div>
+            <Card
+              data-testid={ `${index}-recipe-card` }
+              className={ `recipe-card card-${mode}` }
+            >
+              <div className="recipe-image-container">
+                <Card.Img
+                  data-testid={ `${index}-card-img` }
+                  variant="top"
+                  src={ card.strMealThumb }
+                />
+              </div>
+              <Card.Body
+                className="recipe-body"
+              >
+                <Card.Title
+                  className="recipe-title"
+                  data-testid={ `${index}-card-name` }
+                >
+                  { card.strMeal }
+                </Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        ))}
+      </CardDeck>
     </div>
   );
 }

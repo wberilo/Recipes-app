@@ -27,13 +27,43 @@
   justify-content: space-evenly;
 }
 
-.icon {
+.recipe-icon {
   cursor: pointer;
   margin: 0 11px;
+  overflow: visible;
 }
 
-.heart {
+.recipe-heart {
+  fill: white;
   margin-right: 5px;
+  stroke: black;
+  stroke-width: 1.7px;
+  width: 25px;
+}
+
+.recipe-heart:hover {
+  animation: pulse 1s ease infinite;
+}
+
+.recipe-favorite {
+  fill: red;
+  margin-right: 5px;
+  width: 25px;
+}
+
+.recipe-favorite:hover {
+  animation: small 1s ease infinite;
+}
+
+.share-recipe {
+  fill: black;
+  width: 25px;
+}
+
+.share-recipe:hover {
+  fill: blue;
+  transform: scale(1.5);
+  transition: 1s;
 }
 
 .modal-text {
@@ -59,6 +89,14 @@
 .ingredient {
   background-color: rgb(241, 236, 236);
   padding: 0;
+}
+
+.in-progress {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  margin-top: 2px;
 }
 
 .checked {
@@ -109,4 +147,83 @@
   bottom: 0;
   position: fixed;
   width: 88%;
+}
+
+.dark-recipe {
+  background-color: rgb(10, 10, 10);
+}
+
+.inst-dark-recipe {
+  background-color: rgb(35, 35, 35);
+}
+
+.set-dark-recipe.set-dark-recipe {
+  fill: white;
+}
+
+.set-dark-recipe:hover {
+  fill: white;
+}
+
+.dark-heart {
+  fill: transparent;
+  stroke: white;
+}
+
+.dark-video {
+  border-color: rgb(10, 10, 10);
+}
+
+.cont-dark-recipe.cont-dark-recipe {
+  background-color: rgb(35, 35, 35);
+  box-shadow: 0 4px 5px 0 rgb(35, 35, 35) , 0 6px 20px 0 rgb(35, 35, 35);
+}
+
+.name-dark-recipe {
+  color: white;
+}
+
+.cont-dark-recipe:hover .name-dark-recipe {
+  color: rgb(200, 200, 200);
+}
+
+.dark-checked {
+  color: rgb(200, 200, 200);
+  text-decoration: line-through;
+}
+
+.dark-modal {
+  background-color: rgb(30, 30, 30);
+  border-color: transparent;
+  color: white;
+}
+
+.btn-dark-modal {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+.btn-dark-modal:hover {
+  background-color: rgb(63, 60, 60);
+  border-color: rgb(63, 60, 60);
+}
+
+
+@keyframes pulse {
+
+  0% { transform: scale(1); }
+
+  50% { transform: scale(1.3); }
+
+  100% { transform: scale(1); }
+}
+
+@keyframes small {
+
+  0% { transform: scale(0.7); }
+
+  50% { transform: scale(0.4); }
+
+  100% { transform: scale(0.7); }
 }
