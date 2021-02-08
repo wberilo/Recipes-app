@@ -5,18 +5,60 @@
   margin-top: 5rem;
 }
 
-.login-input {
+.login-input.login-input {
+  background-color: transparent;
   border-radius: 100px;
   margin-bottom: 3rem;
   width: 90%;
+  z-index: 1;
 }
 
-.password-input {
+.login-input:focus {
+  background-color: white;
+}
+
+.password-input.password-input {
+  background-color: transparent;
   border-radius: 100px;
   margin-bottom: 3rem;
   width: 90%;
+  z-index: 1;
+}
+
+.password-input:focus {
+  background-color: white;
 }
 
 .login-btn {
   border-radius: 100px;
+  z-index: 1;
+}
+
+.logo {
+  position: fixed;
+  z-index: 0;
+}
+
+.path1-dark {
+  fill: rgb(100, 100, 100);
+}
+
+.path2-dark {
+  fill: rgb(80, 80, 80);
+}
+
+.path4-dark {
+  fill: rgb(150, 150, 150);
+}
+
+.path6-dark {
+  fill: rgb(200, 200, 200);
+}
+
+.circle-dark {
+  fill: rgb(50, 50, 50);
+}
+
+.g1-dark {
+  fill: rgb(50, 50, 50);
 }
