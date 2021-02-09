@@ -15,6 +15,11 @@
   background-color: white;
 }
 
+.logo-github {
+  fill: black;
+  margin-top: 2rem;
+}
+
 .password-input {
   border-radius: 100px;
   margin-bottom: 2.2rem;
@@ -52,4 +57,8 @@
 
 .g1-dark {
   fill: rgb(50, 50, 50);
+}
+
+.github-dark {
+  fill: white;
 }
