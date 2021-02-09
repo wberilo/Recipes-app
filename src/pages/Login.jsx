@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../context/RecipeContext';
 import './Login.css';
-import { Link } from 'react-router-dom';
 import githubIcon from '../images/GitHub-Mark-64px.png';
 
 function Login({ history }) {
@@ -108,7 +107,7 @@ function Login({ history }) {
       >
         Entrar
       </Button>
-      <a target="_blank" rel="noreferrer" href="https://github.com/wberilo/Recipes-app">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/wberilo/Recipes-app">
         <img src={ githubIcon } className="githubIcon" href="https://github.com/wberilo/Recipes-app" />
       </a>
     </div>
