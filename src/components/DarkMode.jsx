@@ -36,7 +36,7 @@ function DarkMode({ location }) {
 
   return (
     <div className="great-container">
-      <div className={ `dark-mode-container ${headerType}-${header}` }>
+      <div className={ `dark-mode-container ${headerType}-${header} fixed-top` }>
         <Button
           variant={ buttonType }
           className={ `dark-mode-button button-${header}-${headerType}` }
