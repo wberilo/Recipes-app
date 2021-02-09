@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { RecipeContext } from '../context/RecipeContext';
 import './Login.css';
-import githubIcon from '../images/GitHub-Mark-64px.png';
 
 function Login({ history }) {
   const { darkMode } = useContext(RecipeContext);
