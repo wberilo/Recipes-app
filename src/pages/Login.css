@@ -2,27 +2,23 @@
   align-items: center;
   display: flex;
   flex-flow: column wrap;
-  margin-top: 5rem;
 }
 
-.login-input.login-input {
-  background-color: transparent;
+.login-input {
   border-radius: 100px;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
   width: 90%;
-  z-index: 1;
 }
 
 .login-input:focus {
   background-color: white;
 }
 
-.password-input.password-input {
-  background-color: transparent;
+.password-input {
   border-radius: 100px;
-  margin-bottom: 3rem;
+  margin-bottom: 2.2rem;
   width: 90%;
-  z-index: 1;
 }
 
 .password-input:focus {
@@ -32,11 +28,6 @@
 .login-btn {
   border-radius: 100px;
   z-index: 1;
-}
-
-.logo {
-  position: fixed;
-  z-index: 0;
 }
 
 .path1-dark {
